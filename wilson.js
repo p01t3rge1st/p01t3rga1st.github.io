@@ -44,6 +44,7 @@
         
         // Detect touch device
         const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+        console.log('Wilson Chamber: Touch device detected:', isTouchDevice);
 
         // Track mouse position - use pageX/pageY for absolute position
         document.addEventListener('mousemove', (e) => {
@@ -202,9 +203,12 @@
 
         // Animate particles
         function animate(currentTime) {
-            // Emit new particles
-            if (currentTime - lastEmission > config.emissionRate) {
-                if (Math.random() < 0.4) {  // Reduced from 0.7 to 0.4
+            // Emit new particles (more frequent on touch devices)
+            const emitRate = isTouchDevice ? 150 : config.emissionRate;
+            const emitChance = isTouchDevice ? 0.7 : 0.4;
+            
+            if (currentTime - lastEmission > emitRate) {
+                if (Math.random() < emitChance) {
                     createParticle();
                 }
                 lastEmission = currentTime;
