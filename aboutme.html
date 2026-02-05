@@ -69,30 +69,7 @@
       opacity: 1;
     }
 
-    .nav-links-minimal a::after {
-      content: attr(data-file);
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      background: #0a0e1a;
-      color: #ff0055;
-      padding: 5px 12px;
-      border: 1px solid #ff0055;
-      border-radius: 3px;
-      font-size: 12px;
-      white-space: nowrap;
-      pointer-events: none;
-      opacity: 0;
-      transition: all 0.3s ease;
-      text-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
-      margin-bottom: 8px;
-      transform: translateY(0);
-    }
-
-    .nav-links-minimal a:hover::after {
-      opacity: 1;
-      transform: translateY(-10px);
-    }
+    /* hover tooltip removed per user request */
 
     .terminal-box {
       font-family: 'Courier New', monospace;
@@ -411,7 +388,7 @@
 
 <!-- Minimalist Navigation Bar -->
 <div class="navbar-minimal">
-  <a href="index.html" class="logo-minimal">\root</a>
+  <a href="index.html" class="logo-minimal">/root/about.me</a>
   <ul class="nav-links-minimal">
     <li><a href="aboutme.html" data-file="./about.bin">about</a></li>
     <li><a href="projects.html" data-file="./projects.bin">projects</a></li>

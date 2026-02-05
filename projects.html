@@ -72,30 +72,7 @@
       opacity: 1;
     }
 
-    .nav-links-minimal a::after {
-      content: attr(data-file);
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      background: #0a0e1a;
-      color: #ff0055;
-      padding: 5px 12px;
-      border: 1px solid #ff0055;
-      border-radius: 3px;
-      font-size: 12px;
-      white-space: nowrap;
-      pointer-events: none;
-      opacity: 0;
-      transition: all 0.3s ease;
-      text-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
-      margin-bottom: 8px;
-      transform: translateY(0);
-    }
-
-    .nav-links-minimal a:hover::after {
-      opacity: 1;
-      transform: translateY(-10px);
-    }
+    /* hover tooltip removed per user request */
 
     /* Timeline Styles */
     .timeline-container {
@@ -134,7 +111,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: linear-gradient(to bottom, #ff0055, #00aaff, #ff00ff);
+      background: linear-gradient(to bottom, #ff0055, #00aaff, #ff0055);
       box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
     }
 
@@ -171,13 +148,26 @@
     }
 
     .timeline-item:nth-child(3)::before {
-      border-color: #ff00ff;
-      box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+      border-color: #00aaff;
+      box-shadow: 0 0 15px rgba(0, 170, 255, 0.7);
     }
 
     .timeline-item:nth-child(4)::before {
+      border-color: #00aaff;
+      box-shadow: 0 0 15px rgba(0, 170, 255, 0.7);
+    }
+
+    .timeline-item:nth-child(5)::before {
       border-color: #ff0055;
       box-shadow: 0 0 15px rgba(255, 0, 85, 0.7);
+    }
+
+    .timeline-item:nth-child(4) .project-card {
+      border-color: #00aaff;
+    }
+
+    .timeline-item:nth-child(5) .project-card {
+      border-color: #ff0055;
     }
 
     .project-card {
@@ -193,11 +183,11 @@
     }
 
     .timeline-item:nth-child(3) .project-card {
-      border-color: #ff00ff;
+      border-color: #00aaff;
     }
 
     .timeline-item:nth-child(4) .project-card {
-      border-color: #ff0055;
+      border-color: #00aaff;
     }
 
     .project-card:hover {
@@ -205,12 +195,10 @@
       transform: translateY(-5px);
     }
 
-    .timeline-item:nth-child(2) .project-card:hover {
+    .timeline-item:nth-child(2) .project-card:hover,
+    .timeline-item:nth-child(3) .project-card:hover,
+    .timeline-item:nth-child(4) .project-card:hover {
       box-shadow: 0 0 30px rgba(0, 170, 255, 0.3);
-    }
-
-    .timeline-item:nth-child(3) .project-card:hover {
-      box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
     }
 
     .project-date {
@@ -233,8 +221,18 @@
     }
 
     .timeline-item:nth-child(3) .project-title {
-      color: #ff00ff;
-      text-shadow: 0 0 10px rgba(255, 0, 255, 0.4);
+      color: #00aaff;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.4);
+    }
+
+    .timeline-item:nth-child(4) .project-title {
+      color: #00aaff;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.4);
+    }
+
+    .timeline-item:nth-child(5) .project-title {
+      color: #ff0055;
+      text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
     }
 
     .project-desc {
@@ -266,9 +264,21 @@
     }
 
     .timeline-item:nth-child(3) .tag {
-      background: rgba(255, 0, 255, 0.15);
-      border-color: #ff00ff;
-      color: #ff00ff;
+      background: rgba(0, 170, 255, 0.15);
+      border-color: #00aaff;
+      color: #00aaff;
+    }
+
+    .timeline-item:nth-child(4) .tag {
+      background: rgba(0, 170, 255, 0.15);
+      border-color: #00aaff;
+      color: #00aaff;
+    }
+
+    .timeline-item:nth-child(5) .tag {
+      background: rgba(255, 0, 85, 0.15);
+      border-color: #ff0055;
+      color: #ff0055;
     }
 
     .project-link {
@@ -286,6 +296,39 @@
 
     .project-link::before {
       content: '→ ';
+    }
+
+    .project-images {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .project-images img {
+      height: 180px;
+      width: auto;
+      object-fit: cover;
+      border: 1px solid currentColor;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .project-images img:hover {
+      opacity: 1;
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+    }
+
+    .timeline-item:nth-child(2) .project-images img:hover {
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.4);
+    }
+
+    .timeline-item:nth-child(3) .project-images img:hover {
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
     }
 
     .timeline-end {
@@ -311,7 +354,7 @@
 
 <!-- Minimalist Navigation Bar -->
 <div class="navbar-minimal">
-  <a href="index.html" class="logo-minimal">\root</a>
+  <a href="index.html" class="logo-minimal">/root/projects/</a>
   <ul class="nav-links-minimal">
     <li><a href="aboutme.html" data-file="./about.bin">about</a></li>
     <li><a href="projects.html" data-file="./projects.bin">projects</a></li>
@@ -323,69 +366,131 @@
   <h1 class="timeline-header">Projects Timeline</h1>
   
   <div class="timeline">
-    <!-- Project 1 -->
+    <!-- Project 1: Singularity -->
     <div class="timeline-item">
       <div class="project-card">
-        <div class="project-date">// 2024 - Present</div>
-        <div class="project-title">▸ Project Name Here</div>
+        <div class="project-date">// 2019 - Present</div>
+        <div class="project-title">▸ Singularity — Environmental Monitoring Network</div>
         <div class="project-desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-          Describe your project here - what problem it solves, technologies used, your role.
+          A distributed sensor network for monitoring environmental hazards. This long-term project 
+          sparked my journey into electronics, UI development, C++/Python programming, API integration, 
+          and understanding sensor interdependencies. Currently in active development and deployment phase.
         </div>
         <div class="project-tags">
-          <span class="tag">C++</span>
-          <span class="tag">KiCAD</span>
-          <span class="tag">IoT</span>
+          <span class="tag">ESP32</span>
+          <span class="tag">ESP-NOW</span>
+          <span class="tag">nRF</span>
+          <span class="tag">Nextion UI</span>
+          <span class="tag">CANbus</span>
+          <span class="tag">Ethernet</span>
+          <span class="tag">PlatformIO</span>
+        </div>
+        <a href="singularity.html" class="project-link">View Project Status</a>
+      </div>
+    </div>
+
+    <!-- Project 2: Radiometer Restoration -->
+    <div class="timeline-item">
+      <div class="project-card">
+        <div class="project-date">// 2019 - Present (sporadic repairs)</div>
+        <div class="project-title">▸ Vintage Radiometer Restoration Project</div>
+        <div class="project-desc">
+          Restoration of classic Polish dosimetry equipment: RUST Polonium Alpha detectors, 
+          URS-3, SAPOS-90, and vintage HP oscilloscopes. Gained hands-on experience with legacy circuits, 
+          integrated memory response analysis, high-voltage module repairs, amplification and counting circuits.
+        </div>
+        <div class="project-images">
+          <img src="projects_photos/pol1.jpg" alt="Restored Polish dosimetry equipment">
+          <img src="projects_photos/pol2.jpg" alt="Polon Bydgoszcz radiometer">
+        </div>
+        <div class="project-tags">
+          <span class="tag">High Voltage Electronics</span>
+          <span class="tag">Signal Amplification</span>
+          <span class="tag">Counting Circuits</span>
+          <span class="tag">Dosimetry</span>
+          <span class="tag">Nuclear Radiation Monitoring</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: RaySID Software -->
+    <div class="timeline-item">
+      <div class="project-card">
+        <div class="project-date">// 2022 - Present</div>
+        <div class="project-title">▸ RaySID Gamma Spectrometer — Desktop Application</div>
+        <div class="project-desc">
+          Cross-platform desktop software (Linux, Windows, macOS) for the RaySID gamma spectrometer. 
+          Deep dive into binary packet structures, checksums, and Bluetooth communication protocols. 
+          Python GUI application for receiving dosimeter packets and plotting gamma radiation spectrum in real-time.
+          <br><br><em style="color: #00aaff;">Status: In development (beta available on GitHub)</em>
+        </div>
+        <div class="project-images">
+          <img src="projects_photos/ray.jpg" alt="RaySID software interface">
+          <img src="projects_photos/ray2.jpg" alt="Gamma spectrum visualization">
+        </div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">GUI Development</span>
+          <span class="tag">Bluetooth</span>
+          <span class="tag">Binary Protocols</span>
+          <span class="tag">Data Visualization</span>
         </div>
         <a href="#" class="project-link">View on GitHub</a>
       </div>
     </div>
 
-    <!-- Project 2 -->
+    <!-- Project 4: Engineering Thesis -->
     <div class="timeline-item">
       <div class="project-card">
-        <div class="project-date">// 2023</div>
-        <div class="project-title">▸ Another Project</div>
+        <div class="project-date">// 2025 - 2026</div>
+        <div class="project-title">▸ Modular Rotating Platform — Engineering Thesis</div>
         <div class="project-desc">
-          Brief description of this project. What you built, why, and what you learned.
+          Final engineering project for Automation & Robotics degree. A modular rotating platform 
+          designed for astronomy and radio astronomy applications. Features joint interpolation, 
+          Python control application, and STM32 microcontroller with independent timer-driven dual motor control.
+          <br><br><em style="color: #00aaff;">100% solo project — design, construction, firmware, and UI.</em>
+        </div>
+        <div class="project-images">
+          <img src="projects_photos/mpo.jpg" alt="Modular platform overview">
+          <img src="projects_photos/mpo2.jpg" alt="Platform mechanics">
+          <img src="projects_photos/mpo3.jpg" alt="Control interface">
         </div>
         <div class="project-tags">
-          <span class="tag">PCB Design</span>
-          <span class="tag">Embedded</span>
+          <span class="tag">STM32</span>
+          <span class="tag">Motor Control</span>
+          <span class="tag">Python UI</span>
+          <span class="tag">Interpolation</span>
+          <span class="tag">Astronomy</span>
         </div>
-        <a href="#" class="project-link">View Details</a>
+        <a href="#" class="project-link">View on GitHub</a>
       </div>
     </div>
 
-    <!-- Project 3 -->
+    <!-- Project 5: Interelcom PCB -->
     <div class="timeline-item">
       <div class="project-card">
-        <div class="project-date">// 2022</div>
-        <div class="project-title">▸ Yet Another Project</div>
+        <div class="project-date">// 2024 - Team Project</div>
+        <div class="project-title">▸ Interelcom — 4-Layer PCB Design Contract</div>
         <div class="project-desc">
-          More project details here. Add as many timeline items as you need.
+          Commercial team project for Interelcom. Designed a 4-layer PCB in KiCAD featuring STM32 microcontroller 
+          with proper power supply decoupling capacitors, display interface, and peripheral management.
+          <br><br>
+          <em style="color: #ff0055;">PCB Bluetooth antenna design:</em> 
+          Complete RF calculations, impedance matching, trace geometry optimization, and all the delicate 
+          black magic that comes with embedding antennas on PCB. Every millimeter matters.
+        </div>
+        <div class="project-images">
+          <img src="projects_photos/finalPCB.png" alt="Final 4-layer PCB design">
+          <img src="projects_photos/new_antenna.png" alt="PCB Bluetooth antenna design">
         </div>
         <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Hardware</span>
+          <span class="tag">KiCAD</span>
+          <span class="tag">4-Layer PCB</span>
+          <span class="tag">STM32</span>
+          <span class="tag">RF Antenna Design</span>
+          <span class="tag">Bluetooth</span>
+          <span class="tag">Impedance Matching</span>
         </div>
-        <a href="#" class="project-link">Read More</a>
-      </div>
-    </div>
-
-    <!-- Project 4 -->
-    <div class="timeline-item">
-      <div class="project-card">
-        <div class="project-date">// 2021</div>
-        <div class="project-title">▸ First Major Project</div>
-        <div class="project-desc">
-          Description of your earliest significant project.
-        </div>
-        <div class="project-tags">
-          <span class="tag">Arduino</span>
-          <span class="tag">Sensors</span>
-        </div>
-        <a href="#" class="project-link">View Project</a>
       </div>
     </div>
   </div>

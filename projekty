@@ -1,0 +1,43 @@
+Zdjęcia mają być na środku, obok siebie i mieć wszystkie tę SAMĄ WYSOKOŚĆ!!!
+nie patrz na numerki tylko na kolejność projektów
+Napisz po angielsku i dostosuj do obecnej strony
+
+
+
+2. Projekt odnowy radiometrów RUST Polonu alfa, Urs3, sapos90 oraz starego oscylosopu HP
+nauka pracy na starych układach, badania odpowiedzi pamięci scalonej, naprawa modułów wysokiego napiecia, układów zmacniania i zliczania:
+elektronika wysokiego napiecia
+elektornika zliczania
+elektronika wzmacniania sygnałów
+dozymetria
+monitoring promieniowania jądrowego
+2019 - obecnie sproadyczne naprawy
+zdjęcia (odnowione sprżety polskiej dozymetrii jądrowej zakłądy polon bydgoszcz)
+/project_photos/pol1.jpg, pol2.jpg
+
+3. Oprogramowanie komputerowe PC (linux, windows, macos) dla spektrometru gamma raysid, obeznanie się z binarnymi pakietami, checksumą i wieloma mechanizmami działania bluetooth, napisanie w pythone programu gui do odbierania pakietów dozymetru raysid oraz rysowania widma promieniowania gamma w aplaikacji
+w trakcie tworzenia (wersja próbna dostępna na githu)
+2022 - obecnie
+link github:
+zdjęcia: /project_photos/ray.jpg, ray2.jpg
+
+4. projekt inżynieryjny - modułowa platfroma obrotowa do zastosowania w astronomii i radioastronomii. Wykonana jako projekt końcowy stduiów atuomatyka i robotyka
+Posiada intwerpolację przegubow, aplikację do sterowania w pythonie, mikrkotronoerem jest stm32 ktory steruje timerami niezaleznie dwa silniki. konstrukcja, kod i Ui w pełni wykonane tylko przeze mnie. Nikt ne pomagał w konstruklcji
+2025-2026
+Github:
+Zdjęcia: /project_photos/mpo.jpg, mpo2.jpg,  mpo3.jpg
+
+1. projekt singularity - odniesienie jest na pasku nawigacyzjnym
+Projekt prowadzony od 2020 polegający na sieci czujników monitorujących zagrożenia środowiskowe. Jest w trakcie budowy i implementacji. Projekt który spowodował u mnie rozpoczęcie przygody z elektroniką, budowaniem UI, programowaniem C++/Python, odbieraniem API, zależnościami między czujnikami
+Projekt prowadzony od 2019 eroku do teraz
+skille:
+arduino ide
+platformio
+esp32
+esp-now,
+nrf
+Nextion display
+Nextion Ui
+canbus
+ethernet
+bluetooth
