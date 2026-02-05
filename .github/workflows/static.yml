@@ -37,7 +37,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: '.'
+          path: |
+            *.html
+            *.css
+            *.js
+            fonts/
+            projects_photos/
+            CNAME
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
