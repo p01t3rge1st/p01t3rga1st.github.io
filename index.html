@@ -49,6 +49,15 @@
       opacity: 0.7;
     }
 
+    /* Desktop/Mobile text toggle */
+    #mouseBtn .mobile-text {
+      display: none;
+    }
+
+    #mouseBtn .desktop-text {
+      display: inline;
+    }
+
     .question-btn:hover {
       background: rgba(255, 0, 85, 0.1);
       box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
@@ -395,9 +404,16 @@
       }
 
       .answer-box {
-        max-width: 90%;
-        padding: 20px;
-        font-size: 12px;
+        display: none !important;
+      }
+
+      /* Zmiana tekstu przycisku na mobile */
+      #mouseBtn .desktop-text {
+        display: none;
+      }
+
+      #mouseBtn .mobile-text {
+        display: inline;
       }
 
       .footer-section {
@@ -500,7 +516,7 @@
       
       <div class="question-container">
         <button class="question-btn" id="aboutBtn"><strong>Tell me about you</strong></button>
-        <button class="question-btn" id="mouseBtn"><strong>What's the cursor effect?</strong></button>
+        <button class="question-btn" id="mouseBtn"><strong><span class="desktop-text">What's the cursor effect?</span><span class="mobile-text">What's in the background?</span></strong></button>
       </div>
     </div>
   </div>
