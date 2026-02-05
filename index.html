@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <style>
@@ -316,6 +317,134 @@
 
     .nav-tile:hover::before {
       opacity: 1;
+    }
+
+    /* ========== MOBILE RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .navbar-minimal {
+        padding: 15px 4%;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .logo-minimal {
+        font-size: 16px;
+      }
+
+      .nav-links-minimal {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-links-minimal a {
+        font-size: 12px;
+      }
+
+      .content-typewriter .line1,
+      .content-typewriter .line2,
+      .content-typewriter .line3 {
+        font-size: 14px;
+      }
+
+      .content-typewriter h1.line2 {
+        font-size: 28px;
+      }
+
+      .question-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+        padding: 0 20px;
+      }
+
+      .question-btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 15px 25px;
+        font-size: 13px;
+      }
+
+      .answer-box {
+        max-width: 90%;
+        padding: 20px;
+        font-size: 12px;
+      }
+
+      .footer-section {
+        bottom: 15px;
+        padding: 0 3%;
+      }
+
+      .social-links {
+        font-size: 11px;
+        text-align: center;
+      }
+
+      .social-links a {
+        margin: 0 5px;
+        display: inline-block;
+      }
+
+      .banner .content {
+        padding: 0 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-minimal {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .nav-links-minimal {
+        gap: 10px;
+      }
+
+      .nav-links-minimal a {
+        font-size: 11px;
+      }
+
+      .nav-links-minimal a::before {
+        content: '';
+        margin-right: 0;
+      }
+
+      .content-typewriter .line1 {
+        font-size: 12px;
+      }
+
+      .content-typewriter h1.line2 {
+        font-size: 24px;
+      }
+
+      .content-typewriter .line3 {
+        font-size: 11px;
+      }
+
+      .question-btn {
+        padding: 12px 20px;
+        font-size: 12px;
+      }
+
+      .social-links {
+        font-size: 10px;
+        line-height: 1.6;
+      }
+
+      .social-links a {
+        display: block;
+        margin: 5px 0;
+      }
+
+      .footer-section {
+        position: relative;
+        bottom: auto;
+        margin-top: 40px;
+        padding-bottom: 20px;
+      }
     }
   </style>
 </head>

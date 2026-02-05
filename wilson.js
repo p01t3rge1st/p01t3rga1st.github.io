@@ -41,12 +41,31 @@
         let mouseY = window.innerHeight / 2;
         let particles = [];
         let lastEmission = 0;
+        
+        // Detect touch device
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
         // Track mouse position - use pageX/pageY for absolute position
         document.addEventListener('mousemove', (e) => {
             mouseX = e.pageX;
             mouseY = e.pageY;
         });
+        
+        // For touch devices, generate random positions
+        function getEmissionPosition() {
+            if (isTouchDevice) {
+                // Random position on visible screen
+                return {
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight
+                };
+            } else {
+                return {
+                    x: mouseX - window.scrollX,
+                    y: mouseY - window.scrollY
+                };
+            }
+        }
 
         // Choose particle type based on probability
         function chooseParticleType() {
@@ -68,9 +87,10 @@
             const angle = Math.random() * Math.PI * 2; // Random direction
             const length = particle.length[0] + Math.random() * (particle.length[1] - particle.length[0]);
             
-            // Position at cursor (use scroll offset for fixed positioning)
-            const posX = mouseX - window.scrollX;
-            const posY = mouseY - window.scrollY;
+            // Position at cursor or random for touch devices
+            const emitPos = getEmissionPosition();
+            const posX = emitPos.x;
+            const posY = emitPos.y;
             
             // Curve parameters for alpha/beta
             const curveDirection = Math.random() > 0.5 ? 1 : -1;
@@ -261,11 +281,15 @@
 
         requestAnimationFrame(animate);
 
+        // Auto-emit particles (more frequent on touch devices since no cursor)
+        const autoEmitInterval = isTouchDevice ? 400 : 1000;
+        const autoEmitChance = isTouchDevice ? 0.6 : 0.2;
+        
         setInterval(() => {
-            if (Math.random() < 0.2) {  // Reduced from 0.5 to 0.2
+            if (Math.random() < autoEmitChance) {
                 createParticle();
             }
-        }, 1000);  // Increased from 200ms to 1000ms
+        }, autoEmitInterval);
     }
 
     // Start when DOM is ready
