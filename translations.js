@@ -3,7 +3,8 @@ const translations = {
     // index.html
     "greeting": "[Cześć, jestem]",
     "subtitle": "[i uwielbiam tworzyć rzeczy]",
-    "aboutBtn": "Opowiedz mi o sobie",
+    "aboutBtn-desktop": "Opowiedz mi o sobie",
+    "aboutBtn-mobile": "Opowiedz mi o sobie",
     "mouseBtn-desktop": "Co to za efekt kursora?",
     "mouseBtn-mobile": "Co jest w tle?",
     "aboutAnswer-title": "$ whoami",
@@ -132,7 +133,8 @@ const translations = {
     // index.html
     "greeting": "[Hi, my name is]",
     "subtitle": "[and I love to build stuff]",
-    "aboutBtn": "Tell me about you",
+    "aboutBtn-desktop": "Tell me about you",
+    "aboutBtn-mobile": "Tell me about you",
     "mouseBtn-desktop": "What's the cursor effect?",
     "mouseBtn-mobile": "What's in the background?",
     "aboutAnswer-title": "$ whoami",
@@ -254,7 +256,7 @@ const translations = {
     "github": "[GitHub]",
     "linkedin": "[LinkedIn]",
     "email": "[Email]",
-    "version": "v1.0.0 | Last update: 2026-02-05 @ 23:45",
+    "version": "v1.0.0 | Last update: 2026-02-05 @ 14:30",
   }
 };
 

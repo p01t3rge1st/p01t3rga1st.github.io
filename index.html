@@ -50,11 +50,11 @@
     }
 
     /* Desktop/Mobile text toggle */
-    #mouseBtn .mobile-text {
+    .question-btn .mobile-text {
       display: none;
     }
 
-    #mouseBtn .desktop-text {
+    .question-btn .desktop-text {
       display: inline;
     }
 
@@ -369,6 +369,17 @@
         display: flex;
         justify-content: center;
         gap: 15px;
+        margin-top: 10px;
+      }
+
+      .nav-links-minimal li:not(:last-child)::after {
+        content: ' | ';
+        margin-left: 15px;
+        color: #666;
+      }
+
+      .nav-links-minimal li:last-child::before {
+        display: none;
       }
 
       .banner .content {
@@ -418,11 +429,11 @@
       }
 
       /* Zmiana tekstu przycisku na mobile */
-      #mouseBtn .desktop-text {
+      .question-btn .desktop-text {
         display: none;
       }
 
-      #mouseBtn .mobile-text {
+      .question-btn .mobile-text {
         display: inline;
       }
 
@@ -529,8 +540,8 @@
       </div>
       
       <div class="question-container">
-        <button class="question-btn" id="aboutBtn" data-i18n="aboutBtn">Tell me about you</button>
-        <button class="question-btn" id="mouseBtn"><strong><span class="desktop-text" data-i18n="mouseBtn-desktop">What's the cursor effect?</span></strong><span class="mobile-text" data-i18n="mouseBtn-mobile">What's in the background?</span></strong></button>
+        <button class="question-btn" id="aboutBtn"><strong><span class="desktop-text" data-i18n="aboutBtn-desktop">Tell me about you</span><span class="mobile-text" data-i18n="aboutBtn-mobile">Tell me about you</span></strong></button>
+        <button class="question-btn" id="mouseBtn"><strong><span class="desktop-text" data-i18n="mouseBtn-desktop">What's the cursor effect?</span><span class="mobile-text" data-i18n="mouseBtn-mobile">What's in the background?</span></strong></button>
       </div>
     </div>
   </div>
@@ -576,6 +587,9 @@
     const aboutAnswer = document.getElementById('aboutAnswer');
     const mouseAnswer = document.getElementById('mouseAnswer');
 
+    // Check if mobile
+    const isMobile = window.innerWidth <= 768;
+
     aboutBtn.addEventListener('mouseenter', () => {
       aboutAnswer.classList.add('visible');
     });
@@ -589,13 +603,29 @@
       window.location.href = 'aboutme.html';
     });
 
-    mouseBtn.addEventListener('mouseenter', () => {
-      mouseAnswer.classList.add('visible');
-    });
-    
-    mouseBtn.addEventListener('mouseleave', () => {
-      mouseAnswer.classList.remove('visible');
-    });
+    if (isMobile) {
+      // Mobile: click to toggle mouseAnswer
+      mouseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mouseAnswer.classList.toggle('visible');
+      });
+      
+      // Close mouseAnswer when clicking anywhere else on mobile
+      document.addEventListener('click', (e) => {
+        if (mouseAnswer.classList.contains('visible') && e.target !== mouseBtn && !mouseBtn.contains(e.target)) {
+          mouseAnswer.classList.remove('visible');
+        }
+      });
+    } else {
+      // Desktop: hover functionality
+      mouseBtn.addEventListener('mouseenter', () => {
+        mouseAnswer.classList.add('visible');
+      });
+      
+      mouseBtn.addEventListener('mouseleave', () => {
+        mouseAnswer.classList.remove('visible');
+      });
+    }
   </script>
   <script src="wilson.js"></script>
 
@@ -608,7 +638,7 @@
         <a href="mailto:kaminskimateusz.p01@gmail.com" style="color: #ff0055;" data-i18n="email">[Email]</a>
       </div>
     </div>
-    <div class="version-info" data-i18n="version">v1.0.0 | Last update: 2026-02-05 @ 23:45</div>
+    <div class="version-info" data-i18n="version">v1.0.0 | Last update: 2026-02-05 @ 14:30</div>
  
 </body>
 </html>
