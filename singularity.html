@@ -1,21 +1,117 @@
 <html>
 <head>
+  <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    .navbar-minimal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 5%;
+      background: transparent;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo-minimal {
+      font-family: 'Courier New', monospace;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff0055;
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .logo-minimal:hover {
+      text-shadow: 0 0 20px rgba(255, 0, 85, 0.7);
+      color: #ff0055;
+    }
+
+    .nav-links-minimal {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links-minimal li {
+      position: relative;
+    }
+
+    .nav-links-minimal a {
+      font-family: 'Courier New', monospace;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 5px 0;
+    }
+
+    .nav-links-minimal a::before {
+      content: '→ ';
+      color: #ff0055;
+      margin-right: 5px;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links-minimal a:hover {
+      color: #ff0055;
+    }
+
+    .nav-links-minimal a:hover::before {
+      opacity: 1;
+    }
+
+    .nav-links-minimal a::after {
+      content: attr(data-file);
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      background: #0a0e1a;
+      color: #ff0055;
+      padding: 5px 12px;
+      border: 1px solid #ff0055;
+      border-radius: 3px;
+      font-size: 12px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
+      margin-bottom: 8px;
+      transform: translateY(0);
+    }
+
+    .nav-links-minimal a:hover::after {
+      opacity: 1;
+      transform: translateY(-10px);
+    }
+  </style>
 </head>
 <body>
 
 <div id="preloader"></div>
-  <div class="banner">
-    <div class="navbar">
-      <li><a href="index.html"><img src = "logo_HD.png" class="logo"></a></li>
-      <ul>
-        <li><a href="aboutme.html">About Me</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="singularity.html">Singularity</a></li>
-      </ul>
-    </div>
-    
+<!-- Wilson Cloud Chamber Effect -->
+<div class="wilson-chamber"></div>
+
+<!-- Minimalist Navigation Bar -->
+<div class="navbar-minimal">
+  <a href="index.html" class="logo-minimal">mateusz.bin</a>
+  <ul class="nav-links-minimal">
+    <li><a href="aboutme.html" data-file="./about.bin">about</a></li>
+    <li><a href="projects.html" data-file="./projects.bin">projects</a></li>
+    <li><a href="singularity.html" data-file="./singularity.bin">singularity</a></li>
+  </ul>
+</div>
+
+<div class="banner">
     
     <div class="Singularity_Status">
       <h2>  Singularity status: </h2>

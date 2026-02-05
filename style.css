@@ -216,3 +216,34 @@
     margin-right: auto;
     width: 50%;
   }
+
+/* ========== WILSON CLOUD CHAMBER EFFECT ========== */
+.wilson-chamber {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: visible;
+}
+
+/* Dynamic track styles - created by JavaScript */
+.track {
+    position: fixed;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.track-beta {
+    box-shadow: 0 0 4px rgba(180,200,255,0.2);
+}
+
+.track-alpha {
+    box-shadow: 0 0 8px rgba(255,180,100,0.3);
+}
+
+.track-gamma {
+    box-shadow: 0 0 15px rgba(100,180,255,0.4), 0 0 30px rgba(100,180,255,0.2);
+}

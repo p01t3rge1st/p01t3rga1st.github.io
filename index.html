@@ -1,12 +1,177 @@
 
 <html>
 <head>
+  <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid #ff0055;
+      animation: typing 2s steps(30, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #ff0055 }
+    }
+
+    .question-container {
+      display: flex;
+      gap: 30px;
+      margin-top: 50px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .question-btn {
+      font-family: 'Courier New', monospace;
+      background: transparent;
+      border: 2px solid #ff0055;
+      color: #ff0055;
+      padding: 20px 40px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+      text-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+    }
+
+    .question-btn::before {
+      content: '? ';
+      opacity: 0.7;
+    }
+
+    .question-btn:hover {
+      background: rgba(255, 0, 85, 0.1);
+      box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .answer-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #0a0e1a;
+      border: 2px solid #00aaff;
+      padding: 25px 35px;
+      font-family: 'Courier New', monospace;
+      color: #00aaff;
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 500px;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.4);
+      box-shadow: 0 0 30px rgba(0, 170, 255, 0.2), inset 0 0 20px rgba(0, 170, 255, 0.05);
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .answer-box.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .answer-box .title {
+      color: #ff0055;
+      font-weight: bold;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #00aaff;
+      padding-bottom: 10px;
+    }
+
+    .answer-box .close-hint {
+      color: #666;
+      font-size: 11px;
+      margin-top: 15px;
+      text-align: right;
+    }
+
+    .content-typewriter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .content-typewriter .line1,
+    .content-typewriter .line2,
+    .content-typewriter .line3 {
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 0;
+    }
+
+    .content-typewriter .line1 {
+      border-right: 3px solid #ff0055;
+      animation: typing1 1s steps(18, end) forwards, blink-cursor 0.8s step-end infinite;
+    }
+
+    .content-typewriter .line2 {
+      animation: typing2 0.8s steps(10, end) 1s forwards, blink-cursor 0.8s step-end 1s infinite;
+    }
+
+    .content-typewriter .line3 {
+      animation: typing3 1.5s steps(28, end) 1.8s forwards, blink-cursor 0.8s step-end 1.8s infinite;
+    }
+
+    /* Kursor przeskakuje między liniami */
+    .content-typewriter .line1 {
+      animation: typing1 1s steps(18, end) forwards, blink-cursor 0.8s step-end infinite, hide-cursor 0s 1s forwards;
+    }
+
+    .content-typewriter .line2 {
+      animation: typing2 0.8s steps(10, end) 1s forwards, show-cursor 0s 1s forwards, blink-cursor 0.8s step-end 1s infinite, hide-cursor 0s 1.8s forwards;
+    }
+
+    .content-typewriter .line3 {
+      animation: typing3 1.5s steps(28, end) 1.8s forwards, show-cursor 0s 1.8s forwards, blink-cursor 0.8s step-end 1.8s infinite;
+    }
+
+    @keyframes blink-cursor {
+      from, to { border-right-color: #ff0055 }
+      50% { border-right-color: transparent }
+    }
+
+    @keyframes hide-cursor {
+      to { border-right-color: transparent }
+    }
+
+    @keyframes show-cursor {
+      to { border-right: 3px solid #ff0055 }
+    }
+
+    @keyframes typing1 {
+      from { max-width: 0 }
+      to { max-width: 300px }
+    }
+
+    @keyframes typing2 {
+      from { max-width: 0 }
+      to { max-width: 200px }
+    }
+
+    @keyframes typing3 {
+      from { max-width: 0 }
+      to { max-width: 400px }
+    }
+  </style>
 </head>
 <body>
   <div id="preloader"></div>
   <body style="background-color:black;"></body>
+  
+  <!-- Wilson Cloud Chamber Effect -->
+  <div class="wilson-chamber"></div>
   
   <div class="banner">
     <div class="navbar">
@@ -19,11 +184,44 @@
       </ul>
     </div>
     <div class="content">
-      <p> [Hi, my name is] </p>
-      <h1>  Mateusz, </h1>
-      <p> [and I love to code and create] </p>
+      <div class="content-typewriter">
+        <p class="line1"> [Hi, my name is] </p>
+        <h1 class="line2">  Mateusz, </h1>
+        <p class="line3"> [and I love to code and create] </p>
+      </div>
+      
+      <div class="question-container">
+        <button class="question-btn" id="aboutBtn">Tell me about you</button>
+        <button class="question-btn" id="mouseBtn">What's happening with the mouse?</button>
+      </div>
     </div>
   </div>
+
+  <!-- Answer Boxes -->
+  <div class="answer-box" id="aboutAnswer">
+    <div class="title">$ whoami</div>
+    <div>Embedded Systems & Automation Engineer</div>
+    <div>─────────────────────────────</div>
+    <div>▸ Specialization: Robotics (PWr)</div>
+    <div>▸ Skills: C++ | KiCAD | IoT | PCB Design</div>
+    <div>▸ Experience: Nuclear Detection Systems</div>
+    <div>▸ Current: Freelance Hardware Engineer</div>
+    <div class="close-hint">// move mouse away to close</div>
+  </div>
+
+  <div class="answer-box" id="mouseAnswer">
+    <div class="title">$ cat wilson_chamber.info</div>
+    <div>Those trails following your cursor?</div>
+    <div>─────────────────────────────</div>
+    <div>▸ Simulation of Wilson Cloud Chamber</div>
+    <div>▸ Visualizes ionizing radiation tracks</div>
+    <div>▸ Alpha particles: short, thick curves</div>
+    <div>▸ Beta particles: longer, thin curves</div>
+    <div>▸ Gamma rays: straight, long lines</div>
+    <div style="margin-top: 10px; color: #ff0055;">It's physics, made interactive.</div>
+    <div class="close-hint">// move mouse away to close</div>
+  </div>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script>
@@ -32,7 +230,30 @@
     window.addEventListener("load", function(){
       loader.style.display = "none"
     })
+
+    // Question hover functionality
+    const aboutBtn = document.getElementById('aboutBtn');
+    const mouseBtn = document.getElementById('mouseBtn');
+    const aboutAnswer = document.getElementById('aboutAnswer');
+    const mouseAnswer = document.getElementById('mouseAnswer');
+
+    aboutBtn.addEventListener('mouseenter', () => {
+      aboutAnswer.classList.add('visible');
+    });
+    
+    aboutBtn.addEventListener('mouseleave', () => {
+      aboutAnswer.classList.remove('visible');
+    });
+
+    mouseBtn.addEventListener('mouseenter', () => {
+      mouseAnswer.classList.add('visible');
+    });
+    
+    mouseBtn.addEventListener('mouseleave', () => {
+      mouseAnswer.classList.remove('visible');
+    });
   </script>
+  <script src="wilson.js"></script>
   
  
  
