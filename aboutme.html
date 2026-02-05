@@ -89,6 +89,41 @@
       animation: slideInBox 0.6s ease-out forwards;
     }
 
+    .section-content {
+      font-family: 'Courier New', monospace;
+      color: #00aaff;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+      animation: slideInBox 0.4s ease-out forwards;
+    }
+
+    .section-content[data-section="education"] {
+      color: #00aaff;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+    }
+
+    .section-content[data-section="experience"] {
+      color: #ff0055;
+      text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+    }
+
+    .section-content[data-section="skills"] {
+      color: #ff0055;
+      text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+    }
+
+    .section-content[data-section="contact"] {
+      color: #00aaff;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+    }
+
+    .section-content .terminal-title {
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      margin-bottom: 15px;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 10px;
+    }
+
     @keyframes slideInBox {
       from {
         opacity: 0;
@@ -257,12 +292,35 @@
 
     .cmd-menu {
       background: #0a0e1a;
-      border: 2px solid #444;
+      border: 2px solid #ff0055;
       border-radius: 5px;
       padding: 20px;
       margin: 30px 0;
       font-family: 'Courier New', monospace;
       color: #888;
+    }
+
+    .cmd-menu-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .cmd-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out, padding 0.3s ease;
+      padding: 0 20px;
+      margin: 0 -20px;
+      border-top: 0px solid #ff0055;
+    }
+
+    .cmd-content.expanded {
+      max-height: 1500px;
+      padding: 20px;
+      margin-top: 20px;
+      border-top: 1px dashed #ff0055;
     }
 
     .cmd-item {
@@ -274,6 +332,12 @@
       border-radius: 3px;
       transition: all 0.2s;
       position: relative;
+    }
+
+    .cmd-item.active-cmd {
+      background: rgba(255, 0, 85, 0.2);
+      border-color: #ff0055;
+      box-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
     }
 
     .cmd-item:hover {
@@ -528,100 +592,95 @@
 
   <div class="separator"></div>
 
-  <!-- Command Menu -->
-  <div class="cmd-menu" style="border-color: #ff0055; color: #ff0055;">
-    <div style="color: #ff0055; margin-bottom: 15px; font-weight: bold;">$ find : </div>
-    <div class="cmd-item" data-cmd="education" data-file="./education.bin" style="color: #ff0055; border-color: #ff0055;">education</div>
-    <div class="cmd-item" data-cmd="experience" data-file="./experience.bin" style="color: #ff0055; border-color: #ff0055;">experience</div>
-    <div class="cmd-item" data-cmd="skills" data-file="./skills.bin" style="color: #ff0055; border-color: #ff0055;">skills</div>
-    <div class="cmd-item" data-cmd="contact" data-file="./contact.bin" style="color: #ff0055; border-color: #ff0055;">contact</div>
-  </div>
-
-  <div class="separator"></div>
-
-  <!-- EDUCATION Section -->
-  <div class="terminal-box" data-section="education">
-    <div class="terminal-title">┌─ EDUCATION ────────────────────────────────────────┐</div>
-    
-    <div class="terminal-section">
-      <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;">⊡ Wrocław University of Science and Technology</div>
-      <div class="terminal-line"><span class="cmd-prompt">$</span> Degree: <span class="terminal-content">Robotics, Electrical & Electronics Engineering</span></div>
-      <div class="terminal-line"><span class="cmd-prompt">$</span> Period: <span class="terminal-content">Sep 2021 — Feb 2026</span></div>
-      <div class="terminal-line"><span class="cmd-prompt">$</span> Focus: <span class="terminal-content">Embedded Systems, Hardware Design, IoT</span></div>
-    </div>
-  </div>
-
-  <!-- WORK EXPERIENCE Section -->
-  <div class="terminal-box" data-section="experience">
-    <div class="terminal-title">┌─ EXPERIENCE ────────────────────────────────────────┐</div>
-    
-    <div class="experience-entry">
-      <img src="temp_assets/logo.png" alt="In-New Poland" class="experience-logo">
-      <div class="experience-content">
-        <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;">⊡ Nuclear Detection Engineer @ In-New Poland</div>
-        <div class="terminal-line"><span class="cmd-prompt">$</span> Period: <span class="terminal-content">Dec 2021 — Dec 2023 | Wrocław</span></div>
-        <div class="terminal-line"><span class="cmd-prompt">$</span> Tasks: <span class="terminal-content">Radiation detection system design & development</span></div>
-        <div class="terminal-line"><span class="cmd-prompt">$</span> Stack: <span class="terminal-content">C++, PCB Design, Real-time Systems, Lab Equipment</span></div>
-      </div>
+  <!-- Command Menu with Expandable Content -->
+  <div class="cmd-menu">
+    <div class="cmd-menu-header">
+      <div style="color: #ff0055; font-weight: bold;">$ find :</div>
+      <div class="cmd-item" data-cmd="education" data-file="./education.bin" style="color: #ff0055; border-color: #ff0055;">education</div>
+      <div class="cmd-item" data-cmd="experience" data-file="./experience.bin" style="color: #ff0055; border-color: #ff0055;">experience</div>
+      <div class="cmd-item" data-cmd="skills" data-file="./skills.bin" style="color: #ff0055; border-color: #ff0055;">skills</div>
+      <div class="cmd-item" data-cmd="contact" data-file="./contact.bin" style="color: #ff0055; border-color: #ff0055;">contact</div>
     </div>
 
-    <div class="terminal-section" style="margin-top: 25px;">
-      <div class="experience-entry">
-        <img src="temp_assets/interelcom.png" alt="Interelcom" class="experience-logo">
-        <div class="experience-content">
-          <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;">⊡ Freelance Hardware Engineer</div>
-          <div class="terminal-line"><span class="cmd-prompt">$</span> Status: <span class="terminal-content">Active | Contract-based</span></div>
-          <div class="terminal-line"><span class="cmd-prompt">$</span> Services: <span class="terminal-content">PCB Design, Embedded Firmware, IoT Integration</span></div>
-          <div class="terminal-line"><span class="cmd-prompt">$</span> Client: <span class="terminal-content">Interelcom (PCB Manufacturing Contract)</span></div>
+    <div class="cmd-content" id="cmdContent">
+      <!-- EDUCATION Section -->
+      <div class="section-content" data-section="education">
+        <div class="terminal-title">┌─ EDUCATION ────────────────────────────────────────┐</div>
+        <div class="terminal-section">
+          <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;">⊡ Wrocław University of Science and Technology</div>
+          <div class="terminal-line"><span class="cmd-prompt">$</span> Degree: <span class="terminal-content">Robotics, Electrical & Electronics Engineering</span></div>
+          <div class="terminal-line"><span class="cmd-prompt">$</span> Period: <span class="terminal-content">Sep 2021 — Feb 2026</span></div>
+          <div class="terminal-line"><span class="cmd-prompt">$</span> Focus: <span class="terminal-content">Embedded Systems, Hardware Design, IoT</span></div>
         </div>
+      </div>
+
+      <!-- WORK EXPERIENCE Section -->
+      <div class="section-content" data-section="experience">
+        <div class="terminal-title">┌─ EXPERIENCE ────────────────────────────────────────┐</div>
+        <div class="experience-entry">
+          <img src="temp_assets/logo.png" alt="In-New Poland" class="experience-logo">
+          <div class="experience-content">
+            <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;">⊡ Nuclear Detection Engineer @ In-New Poland</div>
+            <div class="terminal-line"><span class="cmd-prompt">$</span> Period: <span class="terminal-content">Dec 2021 — Dec 2023 | Wrocław</span></div>
+            <div class="terminal-line"><span class="cmd-prompt">$</span> Tasks: <span class="terminal-content">Radiation detection system design & development</span></div>
+            <div class="terminal-line"><span class="cmd-prompt">$</span> Stack: <span class="terminal-content">C++, PCB Design, Real-time Systems, Lab Equipment</span></div>
+          </div>
+        </div>
+        <div class="terminal-section" style="margin-top: 25px;">
+          <div class="experience-entry">
+            <img src="temp_assets/interelcom.png" alt="Interelcom" class="experience-logo">
+            <div class="experience-content">
+              <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;">⊡ Freelance Hardware Engineer</div>
+              <div class="terminal-line"><span class="cmd-prompt">$</span> Status: <span class="terminal-content">Active | Contract-based</span></div>
+              <div class="terminal-line"><span class="cmd-prompt">$</span> Services: <span class="terminal-content">PCB Design, Embedded Firmware, IoT Integration</span></div>
+              <div class="terminal-line"><span class="cmd-prompt">$</span> Client: <span class="terminal-content">Interelcom (PCB Manufacturing Contract)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS Section -->
+      <div class="section-content" data-section="skills">
+        <div class="terminal-title">┌─ SKILLS ──────────────────────────────────────────┐</div>
+        <div style="margin-top: 15px;">
+          <div class="terminal-line" style="margin-bottom: 20px;">
+            <span class="terminal-label">Programming:</span>
+            <div class="stat-bar">
+              <div class="bar-fill" style="width: 70%;"><span class="skill-name">C++ / Embedded C</span><span class="skill-percent">70%</span></div>
+            </div>
+          </div>
+          <div class="terminal-line" style="margin-bottom: 20px;">
+            <span class="terminal-label">Hardware:</span>
+            <div class="stat-bar">
+              <div class="bar-fill" style="width: 85%;"><span class="skill-name">KiCAD PCB Design</span><span class="skill-percent">85%</span></div>
+            </div>
+          </div>
+          <div class="terminal-line" style="margin-bottom: 20px;">
+            <span class="terminal-label">IoT Systems:</span>
+            <div class="stat-bar">
+              <div class="bar-fill" style="width: 90%;"><span class="skill-name">Embedded IoT</span><span class="skill-percent">90%</span></div>
+            </div>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-label">Specialization:</span>
+            <div style="margin-top: 10px; line-height: 1.8;">
+              <div>▸ Nuclear Detection Systems</div>
+              <div>▸ Real-time Firmware Development</div>
+              <div>▸ PCB Manufacturing Coordination</div>
+              <div>▸ Laboratory Equipment Integration</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT Section -->
+      <div class="section-content" data-section="contact">
+        <div class="terminal-title">┌─ CONTACT ──────────────────────────────────────────┐</div>
+        <div class="terminal-line"><span class="cmd-prompt">$</span> <span class="terminal-content">mateusz@portfolio.dev</span></div>
+        <div class="terminal-line"><span class="cmd-prompt">$</span> <a href="https://linkedin.com/in/mateusz-kaminski" style="text-decoration: underline;">linkedin.com/in/mateusz-kaminski</a></div>
+        <div class="terminal-line"><span class="cmd-prompt">$</span> <a href="https://github.com/p01t3rga1st" style="text-decoration: underline;">github.com/p01t3rga1st</a></div>
       </div>
     </div>
-  </div>
-
-  <!-- SKILLS Section -->
-  <div class="terminal-box" data-section="skills">
-    <div class="terminal-title">┌─ SKILLS ──────────────────────────────────────────┐</div>
-    
-    <div style="margin-top: 15px;">
-      <div class="terminal-line" style="margin-bottom: 20px;">
-        <span class="terminal-label">Programming:</span>
-        <div class="stat-bar">
-          <div class="bar-fill" style="width: 70%;"><span class="skill-name">C++ / Embedded C</span><span class="skill-percent">70%</span></div>
-        </div>
-      </div>
-
-      <div class="terminal-line" style="margin-bottom: 20px;">
-        <span class="terminal-label">Hardware:</span>
-        <div class="stat-bar">
-          <div class="bar-fill" style="width: 85%;"><span class="skill-name">KiCAD PCB Design</span><span class="skill-percent">85%</span></div>
-        </div>
-      </div>
-
-      <div class="terminal-line" style="margin-bottom: 20px;">
-        <span class="terminal-label">IoT Systems:</span>
-        <div class="stat-bar">
-          <div class="bar-fill" style="width: 90%;"><span class="skill-name">Embedded IoT</span><span class="skill-percent">90%</span></div>
-        </div>
-      </div>
-
-      <div class="terminal-line">
-        <span class="terminal-label">Specialization:</span>
-        <div style="margin-top: 10px; line-height: 1.8;">
-          <div>▸ Nuclear Detection Systems</div>
-          <div>▸ Real-time Firmware Development</div>
-          <div>▸ PCB Manufacturing Coordination</div>
-          <div>▸ Laboratory Equipment Integration</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONTACT Section -->
-  <div class="terminal-box" data-section="contact">
-    <div class="terminal-title">┌─ CONTACT ──────────────────────────────────────────┐</div>
-    <div class="terminal-line"><span class="cmd-prompt">$</span> <span class="terminal-content">mateusz@portfolio.dev</span></div>
-    <div class="terminal-line"><span class="cmd-prompt">$</span> <a href="https://linkedin.com/in/mateusz-kaminski" style="text-decoration: underline;">linkedin.com/in/mateusz-kaminski</a></div>
-    <div class="terminal-line"><span class="cmd-prompt">$</span> <a href="https://github.com/p01t3rga1st" style="text-decoration: underline;">github.com/p01t3rga1st</a></div>
   </div>
 
 </div>
@@ -643,37 +702,51 @@
     }
   });
 
-  // Terminal menu functionality
+  // Terminal menu functionality - expandable find section
+  const cmdContent = document.getElementById('cmdContent');
+  let activeSection = null;
+
   document.querySelectorAll('.cmd-item').forEach(item => {
     item.addEventListener('click', function() {
       const cmd = this.getAttribute('data-cmd');
       
-      // Hide all sections
-      document.querySelectorAll('[data-section]').forEach(section => {
-        section.classList.remove('active');
+      // Remove active class from all cmd-items
+      document.querySelectorAll('.cmd-item').forEach(btn => btn.classList.remove('active-cmd'));
+      
+      // Hide all section contents
+      document.querySelectorAll('.section-content').forEach(section => {
+        section.style.display = 'none';
       });
       
-      // Show selected section with animation
-      const section = document.querySelector('[data-section="' + cmd + '"]');
-      section.classList.add('active');
+      // If clicking the same section, close it
+      if (activeSection === cmd) {
+        cmdContent.classList.remove('expanded');
+        activeSection = null;
+        return;
+      }
       
-      // Scroll to section smoothly
+      // Show selected section
+      const section = document.querySelector('.section-content[data-section="' + cmd + '"]');
+      section.style.display = 'block';
+      
+      // Mark button as active
+      this.classList.add('active-cmd');
+      
+      // Expand the content area
+      cmdContent.classList.add('expanded');
+      activeSection = cmd;
+      
+      // Scroll to content smoothly
       setTimeout(() => {
-        section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        cmdContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 100);
     });
   });
 
-  // Staggered animation for elements on load
-  const boxes = document.querySelectorAll('.terminal-box');
-  boxes.forEach((box, index) => {
-    box.style.animationDelay = (index * 0.15) + 's';
+  // Initially hide all section contents
+  document.querySelectorAll('.section-content').forEach(section => {
+    section.style.display = 'none';
   });
-
-  // Show education by default with animation
-  setTimeout(() => {
-    document.querySelector('[data-section="education"]').classList.add('active');
-  }, 200);
 </script>
 
 <div class="version-info">v1.0.0 | Last update: 2026-02-05 @ 23:45</div>
