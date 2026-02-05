@@ -139,9 +139,34 @@
 
             chamber.appendChild(track);
 
+            // Create radiation symbol (will be positioned at track end)
+            const symbols = { alpha: 'α', beta: 'β', gamma: 'γ' };
+            const symbolColors = { alpha: '#ff6644', beta: '#66aaff', gamma: '#88ddff' };
+            
+            const symbol = document.createElement('span');
+            symbol.textContent = symbols[particle.type];
+            symbol.style.position = 'fixed';
+            symbol.style.fontFamily = 'serif';
+            symbol.style.fontSize = particle.type === 'gamma' ? '16px' : '14px';
+            symbol.style.fontWeight = 'bold';
+            symbol.style.color = symbolColors[particle.type];
+            symbol.style.textShadow = `0 0 8px ${symbolColors[particle.type]}, 0 0 15px ${symbolColors[particle.type]}`;
+            symbol.style.pointerEvents = 'none';
+            symbol.style.zIndex = '10';
+            symbol.style.transform = 'translate(-50%, -50%)';
+            symbol.style.opacity = '0';
+            chamber.appendChild(symbol);
+            
+            // Calculate end position of track
+            const endX = posX + Math.cos(angle) * length;
+            const endY = posY + Math.sin(angle) * length;
+
             // Animation data
             const particleData = {
                 element: track,
+                symbol: symbol,
+                symbolEndX: endX,
+                symbolEndY: endY,
                 startTime: performance.now(),
                 length: length,
                 angle: angle,
@@ -188,6 +213,13 @@
                         // Save current position as starting point for fade movement
                         p.fadeStartX = parseFloat(p.element.style.left);
                         p.fadeStartY = parseFloat(p.element.style.top);
+                        
+                        // Show symbol at track end
+                        if (p.symbol) {
+                            p.symbol.style.left = p.symbolEndX + 'px';
+                            p.symbol.style.top = p.symbolEndY + 'px';
+                            p.symbol.style.opacity = '1';
+                        }
                     }
                 } 
                 else if (p.phase === 'fading') {
@@ -205,8 +237,18 @@
                     p.element.style.top = newY + 'px';
                     p.element.style.opacity = 1 - fadeProgress;
                     
+                    // Move and fade symbol too (from track end position)
+                    if (p.symbol) {
+                        const symbolNewX = p.symbolEndX + config.fadeDirection.x * driftDistance;
+                        const symbolNewY = p.symbolEndY + config.fadeDirection.y * driftDistance;
+                        p.symbol.style.left = symbolNewX + 'px';
+                        p.symbol.style.top = symbolNewY + 'px';
+                        p.symbol.style.opacity = 1 - fadeProgress;
+                    }
+                    
                     if (fadeProgress >= 1) {
                         p.element.remove();
+                        if (p.symbol) p.symbol.remove();
                         return false;
                     }
                 }
