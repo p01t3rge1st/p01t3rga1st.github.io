@@ -475,22 +475,26 @@
 <div class="navbar-minimal">
   <a href="index.html" class="logo-minimal">[mk@dev] /root/projects</a>
   <ul class="nav-links-minimal">
-    <li><a href="aboutme.html" data-file="./about.bin">about</a></li>
-    <li><a href="projects.html" data-file="./projects.bin">projects</a></li>
+    <li><a href="aboutme.html" data-file="./about.bin" data-i18n="nav-about">about</a></li>
+    <li><a href="projects.html" data-file="./projects.bin" data-i18n="nav-projects">projects</a></li>
     <li><a href="singularity.html" data-file="./singularity.bin">singularity</a></li>
+    <li style="border-left: 1px solid #444; padding-left: 20px; margin-left: 10px;">
+      <span data-lang-flag="en" style="cursor: pointer; transition: opacity 0.3s; opacity: 0.5; margin-right: 15px; color: #ff0055;">EN</span>
+      <span data-lang-flag="pl" style="cursor: pointer; transition: opacity 0.3s; opacity: 0.5; color: #ff0055;">PL</span>
+    </li>
   </ul>
 </div>
 
 <div class="timeline-container">
-  <h1 class="timeline-header">Projects Timeline</h1>
+  <h1 class="timeline-header" data-i18n="projects-timeline">Projects Timeline</h1>
   
   <div class="timeline">
     <!-- Project 1: Singularity -->
     <div class="timeline-item">
       <div class="project-card">
-        <div class="project-date">// 2019 - Present</div>
-        <div class="project-title">▸ Singularity — Environmental Monitoring Network</div>
-        <div class="project-desc">
+        <div class="project-date" data-i18n="projects-singularity-date">// 2019 - Present</div>
+        <div class="project-title" data-i18n="projects-singularity-title">▸ Singularity — Environmental Monitoring Network</div>
+        <div class="project-desc" data-i18n="projects-singularity-desc">
           A distributed sensor network for monitoring environmental hazards. This long-term project 
           sparked my journey into electronics, UI development, C++/Python programming, API integration, 
           and understanding sensor interdependencies. Currently in active development and deployment phase.
@@ -504,16 +508,16 @@
           <span class="tag">Ethernet</span>
           <span class="tag">PlatformIO</span>
         </div>
-        <a href="singularity.html" class="project-link">View Project Status</a>
+        <a href="singularity.html" class="project-link" data-i18n="projects-singularity-view">View Project Status</a>
       </div>
     </div>
 
     <!-- Project 2: Radiometer Restoration -->
     <div class="timeline-item">
       <div class="project-card">
-        <div class="project-date">// 2019 - Present (sporadic repairs)</div>
-        <div class="project-title">▸ Vintage Radiometer Restoration Project</div>
-        <div class="project-desc">
+        <div class="project-date" data-i18n="projects-radiometer-date">// 2019 - Present (sporadic repairs)</div>
+        <div class="project-title" data-i18n="projects-radiometer-title">▸ Vintage Radiometer Restoration Project</div>
+        <div class="project-desc" data-i18n="projects-radiometer-desc">
           Restoration of classic Polish dosimetry equipment: RUST Polonium Alpha detectors, 
           URS-3, SAPOS-90, and vintage HP oscilloscopes. Gained hands-on experience with legacy circuits, 
           integrated memory response analysis, high-voltage module repairs, amplification and counting circuits.
@@ -535,9 +539,9 @@
     <!-- Project 3: RaySID Software -->
     <div class="timeline-item">
       <div class="project-card">
-        <div class="project-date">// 2022 - Present</div>
-        <div class="project-title">▸ RaySID Gamma Spectrometer — Desktop Application</div>
-        <div class="project-desc">
+        <div class="project-date" data-i18n="projects-raysid-date">// 2022 - Present</div>
+        <div class="project-title" data-i18n="projects-raysid-title">▸ RaySID Gamma Spectrometer — Desktop Application</div>
+        <div class="project-desc" data-i18n="projects-raysid-desc">
           Cross-platform desktop software (Linux, Windows, macOS) for the RaySID gamma spectrometer. 
           Deep dive into binary packet structures, checksums, and Bluetooth communication protocols. 
           Python GUI application for receiving dosimeter packets and plotting gamma radiation spectrum in real-time.
@@ -561,9 +565,9 @@
     <!-- Project 4: Engineering Thesis -->
     <div class="timeline-item">
       <div class="project-card">
-        <div class="project-date">// 2025 - 2026</div>
-        <div class="project-title">▸ Modular Rotating Platform — Engineering Thesis</div>
-        <div class="project-desc">
+        <div class="project-date" data-i18n="projects-thesis-date">// 2025 - 2026</div>
+        <div class="project-title" data-i18n="projects-thesis-title">▸ Modular Rotating Platform — Engineering Thesis</div>
+        <div class="project-desc" data-i18n="projects-thesis-desc">
           Final engineering project for Automation & Robotics degree. A modular rotating platform 
           designed for astronomy and radio astronomy applications. Features joint interpolation, 
           Python control application, and STM32 microcontroller with independent timer-driven dual motor control.
@@ -588,9 +592,9 @@
     <!-- Project 5: Interelcom PCB -->
     <div class="timeline-item">
       <div class="project-card">
-        <div class="project-date">// 2024 - Team Project</div>
-        <div class="project-title">▸ Interelcom — 4-Layer PCB Design Contract</div>
-        <div class="project-desc">
+        <div class="project-date" data-i18n="projects-interelcom-date">// 2024 - Team Project</div>
+        <div class="project-title" data-i18n="projects-interelcom-title">▸ Interelcom — 4-Layer PCB Design Contract</div>
+        <div class="project-desc" data-i18n="projects-interelcom-desc">
           Commercial team project for Interelcom. Designed a 4-layer PCB in KiCAD featuring STM32 microcontroller 
           with proper power supply decoupling capacitors, display interface, and peripheral management.
           <br><br>
@@ -616,11 +620,12 @@
 
   <div class="timeline-end">
     // more projects coming soon...<br>
-    <span style="color: #ff0055;">EOF</span>
+    <span style="color: #ff0055;" data-i18n="projects-eof">EOF</span>
   </div>
 </div>
 
 <script src="wilson.js"></script>
+<script src="translations.js"></script>
 <script>
   var loader = document.getElementById("preloader");
   window.addEventListener("load", function(){

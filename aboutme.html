@@ -573,9 +573,13 @@
 <div class="navbar-minimal">
   <a href="index.html" class="logo-minimal">[mk@dev] /root/about.me</a>
   <ul class="nav-links-minimal">
-    <li><a href="aboutme.html" data-file="./about.bin">about</a></li>
-    <li><a href="projects.html" data-file="./projects.bin">projects</a></li>
+    <li><a href="aboutme.html" data-file="./about.bin" data-i18n="nav-about">about</a></li>
+    <li><a href="projects.html" data-file="./projects.bin" data-i18n="nav-projects">projects</a></li>
     <li><a href="singularity.html" data-file="./singularity.bin">singularity</a></li>
+    <li style="border-left: 1px solid #444; padding-left: 20px; margin-left: 10px;">
+      <span data-lang-flag="en" style="cursor: pointer; transition: opacity 0.3s; opacity: 0.5; margin-right: 15px; color: #ff0055;">EN</span>
+      <span data-lang-flag="pl" style="cursor: pointer; transition: opacity 0.3s; opacity: 0.5; color: #ff0055;">PL</span>
+    </li>
   </ul>
 </div>
 
@@ -595,45 +599,45 @@
   <!-- Command Menu with Expandable Content -->
   <div class="cmd-menu">
     <div class="cmd-menu-header">
-      <div style="color: #ff0055; font-weight: bold;">$ find :</div>
-      <div class="cmd-item" data-cmd="education" data-file="./education.bin" style="color: #ff0055; border-color: #ff0055;">education</div>
-      <div class="cmd-item" data-cmd="experience" data-file="./experience.bin" style="color: #ff0055; border-color: #ff0055;">experience</div>
-      <div class="cmd-item" data-cmd="skills" data-file="./skills.bin" style="color: #ff0055; border-color: #ff0055;">skills</div>
-      <div class="cmd-item" data-cmd="contact" data-file="./contact.bin" style="color: #ff0055; border-color: #ff0055;">contact</div>
+      <div style="color: #ff0055; font-weight: bold;" data-i18n="aboutme-find">$ find :</div>
+      <div class="cmd-item" data-cmd="education" data-file="./education.bin" style="color: #ff0055; border-color: #ff0055;" data-i18n="aboutme-education">education</div>
+      <div class="cmd-item" data-cmd="experience" data-file="./experience.bin" style="color: #ff0055; border-color: #ff0055;" data-i18n="aboutme-experience">experience</div>
+      <div class="cmd-item" data-cmd="skills" data-file="./skills.bin" style="color: #ff0055; border-color: #ff0055;" data-i18n="aboutme-skills">skills</div>
+      <div class="cmd-item" data-cmd="contact" data-file="./contact.bin" style="color: #ff0055; border-color: #ff0055;" data-i18n="aboutme-contact">contact</div>
     </div>
 
     <div class="cmd-content" id="cmdContent">
       <!-- EDUCATION Section -->
       <div class="section-content" data-section="education">
-        <div class="terminal-title">┌─ EDUCATION ────────────────────────────────────────┐</div>
+        <div class="terminal-title" data-i18n="aboutme-education-title">┌─ EDUCATION ────────────────────────────────────────┐</div>
         <div class="terminal-section">
-          <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;">⊡ Wrocław University of Science and Technology</div>
-          <div class="terminal-line"><span class="cmd-prompt">$</span> Degree: <span class="terminal-content">Robotics, Electrical & Electronics Engineering</span></div>
-          <div class="terminal-line"><span class="cmd-prompt">$</span> Period: <span class="terminal-content">Sep 2021 — Feb 2026</span></div>
-          <div class="terminal-line"><span class="cmd-prompt">$</span> Focus: <span class="terminal-content">Embedded Systems, Hardware Design, IoT</span></div>
+          <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;" data-i18n="aboutme-university">⊡ Wrocław University of Science and Technology</div>
+          <div class="terminal-line"><span class="cmd-prompt">$</span> <span data-i18n="aboutme-degree-label">Degree:</span> <span class="terminal-content" data-i18n="aboutme-degree-val2">Robotics, Electrical & Electronics Engineering</span></div>
+          <div class="terminal-line"><span class="cmd-prompt">$</span> <span data-i18n="aboutme-period">Period:</span> <span class="terminal-content" data-i18n="aboutme-period-val">Sep 2021 — Feb 2026</span></div>
+          <div class="terminal-line"><span class="cmd-prompt">$</span> <span data-i18n="aboutme-focus">Focus:</span> <span class="terminal-content" data-i18n="aboutme-focus-val">Embedded Systems, Hardware Design, IoT</span></div>
         </div>
       </div>
 
       <!-- WORK EXPERIENCE Section -->
       <div class="section-content" data-section="experience">
-        <div class="terminal-title">┌─ EXPERIENCE ────────────────────────────────────────┐</div>
+        <div class="terminal-title" data-i18n="aboutme-experience-title">┌─ EXPERIENCE ────────────────────────────────────────┐</div>
         <div class="experience-entry">
           <img src="temp_assets/logo.png" alt="In-New Poland" class="experience-logo">
           <div class="experience-content">
-            <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;">⊡ Nuclear Detection Engineer @ In-New Poland</div>
-            <div class="terminal-line"><span class="cmd-prompt">$</span> Period: <span class="terminal-content">Dec 2021 — Dec 2023 | Wrocław</span></div>
-            <div class="terminal-line"><span class="cmd-prompt">$</span> Tasks: <span class="terminal-content">Radiation detection system design & development</span></div>
-            <div class="terminal-line"><span class="cmd-prompt">$</span> Stack: <span class="terminal-content">C++, PCB Design, Real-time Systems, Lab Equipment</span></div>
+            <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;" data-i18n="aboutme-innew">⊡ Nuclear Detection Engineer @ In-New Poland</div>
+            <div class="terminal-line"><span class="cmd-prompt">$</span> <span data-i18n="aboutme-period-label">Period:</span> <span class="terminal-content" data-i18n="aboutme-period-innew">Dec 2021 — Dec 2023 | Wrocław</span></div>
+            <div class="terminal-line"><span class="cmd-prompt">$</span> <span data-i18n="aboutme-tasks">Tasks:</span> <span class="terminal-content" data-i18n="aboutme-tasks-val">Radiation detection system design & development</span></div>
+            <div class="terminal-line"><span class="cmd-prompt">$</span> <span data-i18n="aboutme-stack">Stack:</span> <span class="terminal-content" data-i18n="aboutme-stack-val">C++, PCB Design, Real-time Systems, Lab Equipment</span></div>
           </div>
         </div>
         <div class="terminal-section" style="margin-top: 25px;">
           <div class="experience-entry">
             <img src="temp_assets/interelcom.png" alt="Interelcom" class="experience-logo">
             <div class="experience-content">
-              <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;">⊡ Freelance Hardware Engineer</div>
-              <div class="terminal-line"><span class="cmd-prompt">$</span> Status: <span class="terminal-content">Active | Contract-based</span></div>
-              <div class="terminal-line"><span class="cmd-prompt">$</span> Services: <span class="terminal-content">PCB Design, Embedded Firmware, IoT Integration</span></div>
-              <div class="terminal-line"><span class="cmd-prompt">$</span> Client: <span class="terminal-content">Interelcom (PCB Manufacturing Contract)</span></div>
+              <div class="terminal-line" style="font-weight: bold; margin-bottom: 10px;" data-i18n="aboutme-freelance">⊡ Freelance Hardware Engineer</div>
+              <div class="terminal-line"><span class="cmd-prompt">$</span> <span data-i18n="aboutme-status">Status:</span> <span class="terminal-content" data-i18n="aboutme-status-val">Active | Contract-based</span></div>
+              <div class="terminal-line"><span class="cmd-prompt">$</span> <span data-i18n="aboutme-services">Services:</span> <span class="terminal-content" data-i18n="aboutme-services-val">PCB Design, Embedded Firmware, IoT Integration</span></div>
+              <div class="terminal-line"><span class="cmd-prompt">$</span> <span data-i18n="aboutme-client">Client:</span> <span class="terminal-content" data-i18n="aboutme-client-val">Interelcom (PCB Manufacturing Contract)</span></div>
             </div>
           </div>
         </div>
@@ -641,33 +645,33 @@
 
       <!-- SKILLS Section -->
       <div class="section-content" data-section="skills">
-        <div class="terminal-title">┌─ SKILLS ──────────────────────────────────────────┐</div>
+        <div class="terminal-title" data-i18n="aboutme-skills-title">┌─ SKILLS ──────────────────────────────────────────┐</div>
         <div style="margin-top: 15px;">
           <div class="terminal-line" style="margin-bottom: 20px;">
-            <span class="terminal-label">Programming:</span>
+            <span class="terminal-label" data-i18n="aboutme-programming">Programming:</span>
             <div class="stat-bar">
-              <div class="bar-fill" style="width: 70%;"><span class="skill-name">C++ / Embedded C</span><span class="skill-percent">70%</span></div>
+              <div class="bar-fill" style="width: 70%;"><span class="skill-name" data-i18n="aboutme-programming-val">C++ / Embedded C</span><span class="skill-percent">70%</span></div>
             </div>
           </div>
           <div class="terminal-line" style="margin-bottom: 20px;">
-            <span class="terminal-label">Hardware:</span>
+            <span class="terminal-label" data-i18n="aboutme-hardware">Hardware:</span>
             <div class="stat-bar">
-              <div class="bar-fill" style="width: 85%;"><span class="skill-name">KiCAD PCB Design</span><span class="skill-percent">85%</span></div>
+              <div class="bar-fill" style="width: 85%;"><span class="skill-name" data-i18n="aboutme-hardware-val">KiCAD PCB Design</span><span class="skill-percent">85%</span></div>
             </div>
           </div>
           <div class="terminal-line" style="margin-bottom: 20px;">
-            <span class="terminal-label">IoT Systems:</span>
+            <span class="terminal-label" data-i18n="aboutme-iot">IoT Systems:</span>
             <div class="stat-bar">
-              <div class="bar-fill" style="width: 90%;"><span class="skill-name">Embedded IoT</span><span class="skill-percent">90%</span></div>
+              <div class="bar-fill" style="width: 90%;"><span class="skill-name" data-i18n="aboutme-iot-val">Embedded IoT</span><span class="skill-percent">90%</span></div>
             </div>
           </div>
           <div class="terminal-line">
-            <span class="terminal-label">Specialization:</span>
+            <span class="terminal-label" data-i18n="aboutme-spec-label">Specialization:</span>
             <div style="margin-top: 10px; line-height: 1.8;">
-              <div>▸ Nuclear Detection Systems</div>
-              <div>▸ Real-time Firmware Development</div>
-              <div>▸ PCB Manufacturing Coordination</div>
-              <div>▸ Laboratory Equipment Integration</div>
+              <div data-i18n="aboutme-spec-nuclear">▸ Nuclear Detection Systems</div>
+              <div data-i18n="aboutme-spec-realtime">▸ Real-time Firmware Development</div>
+              <div data-i18n="aboutme-spec-pcb">▸ PCB Manufacturing Coordination</div>
+              <div data-i18n="aboutme-spec-lab">▸ Laboratory Equipment Integration</div>
             </div>
           </div>
         </div>
@@ -675,8 +679,8 @@
 
       <!-- CONTACT Section -->
       <div class="section-content" data-section="contact">
-        <div class="terminal-title">┌─ CONTACT ──────────────────────────────────────────┐</div>
-        <div class="terminal-line"><span class="cmd-prompt">$</span> <span class="terminal-content">mateusz@portfolio.dev</span></div>
+        <div class="terminal-title" data-i18n="aboutme-contact-title">┌─ CONTACT ──────────────────────────────────────────┐</div>
+        <div class="terminal-line"><span class="cmd-prompt">$</span> <span class="terminal-content" data-i18n="aboutme-email-val">mateusz@portfolio.dev</span></div>
         <div class="terminal-line"><span class="cmd-prompt">$</span> <a href="https://linkedin.com/in/mateusz-kaminski" style="text-decoration: underline;">linkedin.com/in/mateusz-kaminski</a></div>
         <div class="terminal-line"><span class="cmd-prompt">$</span> <a href="https://github.com/p01t3rga1st" style="text-decoration: underline;">github.com/p01t3rga1st</a></div>
       </div>
@@ -686,6 +690,7 @@
 </div>
 
 <script src="wilson.js"></script>
+<script src="translations.js"></script>
 <script>
   var loader = document.getElementById("preloader");
   window.addEventListener("load", function(){

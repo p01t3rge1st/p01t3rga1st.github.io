@@ -342,6 +342,10 @@
     <li><a href="aboutme.html" data-file="./about.bin">about</a></li>
     <li><a href="projects.html" data-file="./projects.bin">projects</a></li>
     <li><a href="singularity.html" data-file="./singularity.bin">singularity</a></li>
+    <li style="border-left: 1px solid #444; padding-left: 20px; margin-left: 10px;">
+      <span data-lang-flag="en" style="cursor: pointer; transition: opacity 0.3s; opacity: 0.5; margin-right: 15px; color: #ff0055;">EN</span>
+      <span data-lang-flag="pl" style="cursor: pointer; transition: opacity 0.3s; opacity: 0.5; color: #ff0055;">PL</span>
+    </li>
   </ul>
 </div>
 
@@ -349,56 +353,57 @@
   
   <!-- Status Header -->
   <div class="status-header">
-    <div class="status-label">Singularity Network Status:</div>
-    <div class="status-main">[ OFFLINE ]</div>
+    <div class="status-label" data-i18n="singularity-status">Singularity Network Status:</div>
+    <div class="status-main" data-i18n="singularity-offline">[ OFFLINE ]</div>
   </div>
 
   <!-- Subsystems Box -->
   <div class="subsystems-box">
-    <div class="subsystems-title">SUBSYSTEMS</div>
+    <div class="subsystems-title" data-i18n="singularity-subsystems">SUBSYSTEMS</div>
     
     <div class="subsystem-item">
-      <span class="subsystem-name">Air Quality Monitoring (PM2.5)</span>
+      <span class="subsystem-name" data-i18n="singularity-air-quality">Air Quality Monitoring (PM2.5)</span>
       <span class="subsystem-status status-offline">OFFLINE</span>
     </div>
     
     <div class="subsystem-item">
-      <span class="subsystem-name">Radiation Monitoring (Scintillator)</span>
+      <span class="subsystem-name" data-i18n="singularity-radiation">Radiation Monitoring (Scintillator)</span>
       <span class="subsystem-status status-offline">OFFLINE</span>
     </div>
     
     <div class="subsystem-item">
-      <span class="subsystem-name">EMP Detection System</span>
+      <span class="subsystem-name" data-i18n="singularity-emp">EMP Detection System</span>
       <span class="subsystem-status status-offline">OFFLINE</span>
     </div>
     
     <div class="subsystem-item">
-      <span class="subsystem-name">UV Index Sensor</span>
+      <span class="subsystem-name" data-i18n="singularity-uv">UV Index Sensor</span>
       <span class="subsystem-status status-offline">OFFLINE</span>
     </div>
   </div>
 
   <!-- Description Box -->
   <div class="description-box">
-    <div class="description-title">Project Overview</div>
-    <div class="description-text">
+    <div class="description-title" data-i18n="singularity-overview-title">Project Overview</div>
+    <div class="description-text" data-i18n="singularity-overview-desc">
       <strong>Singularity</strong> is an environmental monitoring network currently in development. 
       The system will consist of multiple autonomous stations distributed across Poland, 
       displaying real-time results on an interactive map.
     </div>
     
     <ul class="feature-list">
-      <li>Natural radiation detection via scintillation counter</li>
-      <li>Air quality monitoring with PM2.5 sensor array</li>
-      <li>Electromagnetic pulse detection (custom hardware)</li>
-      <li>UV index measurement and tracking</li>
-      <li>Distributed network with central data aggregation</li>
+      <li data-i18n="singularity-feature1">Natural radiation detection via scintillation counter</li>
+      <li data-i18n="singularity-feature2">Air quality monitoring with PM2.5 sensor array</li>
+      <li data-i18n="singularity-feature3">Electromagnetic pulse detection (custom hardware)</li>
+      <li data-i18n="singularity-feature4">UV index measurement and tracking</li>
+      <li data-i18n="singularity-feature5">Distributed network with central data aggregation</li>
     </ul>
   </div>
 
 </div>
 
 <script src="wilson.js"></script>
+<script src="translations.js"></script>
 <script>
   var loader = document.getElementById("preloader");
   window.addEventListener("load", function(){

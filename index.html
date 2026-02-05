@@ -355,10 +355,20 @@
         gap: 15px;
         flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
       }
 
       .nav-links-minimal a {
         font-size: 12px;
+      }
+
+      .nav-links-minimal li:last-child {
+        border-left: none;
+        padding-left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
       }
 
       .banner .content {
@@ -502,51 +512,56 @@
     <div class="navbar-minimal">
       <a href="index.html" class="logo-minimal">[mk@dev] /root/</a>
       <ul class="nav-links-minimal">
-        <li><a href="aboutme.html" data-file="./about.bin">about</a></li>
-        <li><a href="projects.html" data-file="./projects.bin">projects</a></li>
+        <li><a href="aboutme.html" data-file="./about.bin" data-i18n="nav-about">about</a></li>
+        <li><a href="projects.html" data-file="./projects.bin" data-i18n="nav-projects">projects</a></li>
         <li><a href="singularity.html" data-file="./singularity.bin">singularity</a></li>
+        <li style="border-left: 1px solid #444; padding-left: 20px; margin-left: 10px;">
+          <span data-lang-flag="en" style="cursor: pointer; transition: opacity 0.3s; opacity: 0.5; margin-right: 15px; color: #ff0055;">EN</span>
+          <span data-lang-flag="pl" style="cursor: pointer; transition: opacity 0.3s; opacity: 0.5; color: #ff0055;">PL</span>
+        </li>
       </ul>
     </div>
     <div class="content">
       <div class="content-typewriter">
-        <p class="line1"> [Hi, my name is] </p>
+        <p class="line1" data-i18n="greeting"> [Hi, my name is] </p>
         <h1 class="line2">  Mateusz </h1>
-        <p class="line3"> [and I love to build stuff] </p>
+        <p class="line3" data-i18n="subtitle"> [and I love to build stuff] </p>
       </div>
       
       <div class="question-container">
-        <button class="question-btn" id="aboutBtn"><strong>Tell me about you</strong></button>
-        <button class="question-btn" id="mouseBtn"><strong><span class="desktop-text">What's the cursor effect?</span><span class="mobile-text">What's in the background?</span></strong></button>
+        <button class="question-btn" id="aboutBtn" data-i18n="aboutBtn">Tell me about you</button>
+        <button class="question-btn" id="mouseBtn"><strong><span class="desktop-text" data-i18n="mouseBtn-desktop">What's the cursor effect?</span></strong><span class="mobile-text" data-i18n="mouseBtn-mobile">What's in the background?</span></strong></button>
       </div>
     </div>
   </div>
 
   <!-- Answer Boxes -->
   <div class="answer-box" id="aboutAnswer">
-    <div class="title">$ whoami</div>
-    <div>Embedded Systems & Automation Engineer</div>
+    <div class="title" data-i18n="aboutAnswer-title">$ whoami</div>
+    <div data-i18n="aboutAnswer-role">Embedded Systems & Automation Engineer</div>
     <div>─────────────────────────────</div>
-    <div>▸ Specialization: Robotics (PWr)</div>
-    <div>▸ Skills: C++ | KiCAD | IoT | PCB Design</div>
-    <div>▸ Experience: Nuclear Detection Systems</div>
-    <div>▸ Current: Freelance Hardware Engineer</div>
-    <div class="close-hint">// move mouse away to close</div>
+    <div data-i18n="aboutAnswer-spec1">▸ Specialization: Robotics (PWr)</div>
+    <div data-i18n="aboutAnswer-spec2">▸ Skills: C++ | KiCAD | IoT | PCB Design</div>
+    <div data-i18n="aboutAnswer-spec3">▸ Experience: Nuclear Detection Systems</div>
+    <div data-i18n="aboutAnswer-spec4">▸ Current: Freelance Hardware Engineer</div>
+    <div class="close-hint" data-i18n="aboutAnswer-hint">// move mouse away to close</div>
   </div>
 
   <div class="answer-box" id="mouseAnswer">
-    <div class="title">$ cat wilson_chamber.info</div>
-    <div>Those trails following your cursor?</div>
+    <div class="title" data-i18n="mouseAnswer-title">$ cat wilson_chamber.info</div>
+    <div data-i18n="mouseAnswer-desc">Those trails following your cursor?</div>
     <div>─────────────────────────────</div>
-    <div>▸ Simulation of Wilson Cloud Chamber</div>
-    <div>▸ Visualizes ionizing radiation tracks</div>
-    <div>▸ Alpha particles: short, thick curves</div>
-    <div>▸ Beta particles: longer, thin curves</div>
-    <div>▸ Gamma rays: straight, long lines</div>
-    <div style="margin-top: 10px; color: #ff0055;">It's physics, made interactive.</div>
-    <div class="close-hint">// move mouse away to close</div>
+    <div data-i18n="mouseAnswer-what">▸ Simulation of Wilson Cloud Chamber</div>
+    <div data-i18n="mouseAnswer-viz">▸ Visualizes ionizing radiation tracks</div>
+    <div data-i18n="mouseAnswer-alpha">▸ Alpha particles: short, thick curves</div>
+    <div data-i18n="mouseAnswer-beta">▸ Beta particles: longer, thin curves</div>
+    <div data-i18n="mouseAnswer-gamma">▸ Gamma rays: straight, long lines</div>
+    <div style="margin-top: 10px; color: #ff0055;" data-i18n="mouseAnswer-end">It's physics, made interactive.</div>
+    <div class="close-hint" data-i18n="mouseAnswer-hint">// move mouse away to close</div>
   </div>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="translations.js"></script>
 
   <script>
     var loader = document.getElementById("preloader");
@@ -587,13 +602,13 @@
   <!-- Footer Section -->
     <div class="footer-section">
       <div class="social-links">
-        <span style="color: #ff0055;">$</span> connect :
-        <a href="https://github.com/p01t3rge1st" target="_blank" style="color: #ff0055;">[GitHub]</a>
-        <a href="https://www.linkedin.com/in/mateusz-kamiński-2542543a9/" target="_blank" style="color: #ff0055;">[LinkedIn]</a>
-        <a href="mailto:kaminskimateusz.p01@gmail.com" style="color: #ff0055;">[Email]</a>
+        <span style="color: #ff0055;" data-i18n="connect">$ connect :</span>
+        <a href="https://github.com/p01t3rge1st" target="_blank" style="color: #ff0055;" data-i18n="github">[GitHub]</a>
+        <a href="https://www.linkedin.com/in/mateusz-kamiński-2542543a9/" target="_blank" style="color: #ff0055;" data-i18n="linkedin">[LinkedIn]</a>
+        <a href="mailto:kaminskimateusz.p01@gmail.com" style="color: #ff0055;" data-i18n="email">[Email]</a>
       </div>
     </div>
-    <div class="version-info">v1.0.0 | Last update: 2026-02-05 @ 23:45</div>
+    <div class="version-info" data-i18n="version">v1.0.0 | Last update: 2026-02-05 @ 23:45</div>
  
 </body>
 </html>
