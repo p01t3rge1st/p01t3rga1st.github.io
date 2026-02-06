@@ -187,7 +187,6 @@
 
     .cmd-item:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
     }
 
     .terminal-box[data-section="education"] {
@@ -202,13 +201,6 @@
       color: #ff0055;
       text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
       box-shadow: inset 0 0 20px rgba(255, 0, 85, 0.1);
-    }
-
-    .terminal-box[data-section="projects"] {
-      border-color: #ff00ff;
-      color: #ff00ff;
-      text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
-      box-shadow: inset 0 0 20px rgba(255, 0, 255, 0.1);
     }
 
     .terminal-box[data-section="skills"] {
@@ -308,7 +300,7 @@
 
     .cmd-menu {
       background: #0a0e1a;
-      border: 2px solid #ff0055;
+      border: 2px solid #333;
       border-radius: 5px;
       padding: 20px;
       margin: 30px 0;
@@ -336,7 +328,7 @@
       max-height: 1500px;
       padding: 20px;
       margin-top: 20px;
-      border-top: 1px dashed #ff0055;
+      border-top: 1px dashed #444;
     }
 
     .cmd-item {
@@ -350,15 +342,23 @@
       position: relative;
     }
 
-    .cmd-item.active-cmd {
-      background: rgba(255, 0, 85, 0.2);
+    .cmd-item.active-cmd[data-cmd="education"],
+    .cmd-item.active-cmd[data-cmd="contact"] {
+      background: rgba(0, 170, 255, 0.15);
+      border-color: #00aaff;
+      box-shadow: 0 0 10px rgba(0, 170, 255, 0.4);
+    }
+
+    .cmd-item.active-cmd[data-cmd="experience"],
+    .cmd-item.active-cmd[data-cmd="skills"] {
+      background: rgba(255, 0, 85, 0.15);
       border-color: #ff0055;
       box-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
     }
 
     .cmd-item:hover {
       background: #1a1a2e;
-      border-color: #666;
+      border-color: currentColor;
     }
 
     .cmd-item::before {
@@ -434,15 +434,6 @@
       border-color: #ff0055;
     }
 
-    .cmd-item[data-cmd="projects"] {
-      color: #ff00ff;
-    }
-
-    .cmd-item[data-cmd="projects"]:hover {
-      text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
-      border-color: #ff00ff;
-    }
-
     .cmd-item[data-cmd="skills"] {
       color: #ff0055;
     }
@@ -453,24 +444,15 @@
     }
 
     .cmd-item[data-cmd="contact"] {
-      color: #ff00ff;
+      color: #00aaff;
     }
 
     .cmd-item[data-cmd="contact"]:hover {
-      text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
-      border-color: #ff00ff;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
+      border-color: #00aaff;
     }
 
-    .version-info {
-      position: fixed;
-      bottom: 8px;
-      right: 15px;
-      font-family: 'Courier New', monospace;
-      font-size: 10px;
-      color: #333;
-      z-index: 5;
-      pointer-events: none;
-    }
+
 
     /* ========== MOBILE RESPONSIVE ========== */
     @media (max-width: 768px) {
@@ -603,11 +585,11 @@
 
   <!-- Header Terminal -->
   <div class="terminal-box" style="border-color: #00aaff; display: block; margin-top: 40px;">
-    <div class="terminal-title" style="border-color: #00aaff; color: #00aaff;">┌─ MAIN_INFO ─────────────────────────────────────┐</div>
-    <div class="terminal-line" style="color: #00aaff;"><span class="terminal-label">Username:</span> <span class="terminal-content">Mateusz Kamiński</span></div>
-    <div class="terminal-line" style="color: #00aaff;"><span class="terminal-label">Title:</span> <span class="terminal-content">Embedded Systems & Automation Engineer</span></div>
-    <div class="terminal-line" style="color: #00aaff;"><span class="terminal-label">Degree:</span> <span class="terminal-content">Automatyka i Robotyka | Specjalizacja: Robotyka</span></div>
-    <div class="terminal-line" style="color: #00aaff;"><span class="terminal-label">Specialty:</span> <span class="terminal-content" style="color: #00aaff;">PCB Design | C++ | IoT | Nuclear Detection</span></div>
+    <div class="terminal-title" style="border-color: #00aaff; color: #00aaff;" data-i18n="aboutme-maininfo-title">┌─ MAIN_INFO ─────────────────────────────────────┐</div>
+    <div class="terminal-line" style="color: #00aaff;"><span class="terminal-label" data-i18n="aboutme-username">Username:</span> <span class="terminal-content" data-i18n="aboutme-username-val">Mateusz Kamiński</span></div>
+    <div class="terminal-line" style="color: #00aaff;"><span class="terminal-label" data-i18n="aboutme-title">Title:</span> <span class="terminal-content" data-i18n="aboutme-title-val">Embedded & automation engineer</span></div>
+    <div class="terminal-line" style="color: #00aaff;"><span class="terminal-label" data-i18n="aboutme-degree">Degree:</span> <span class="terminal-content" data-i18n="aboutme-degree-val">Automatyka i Robotyka | Specjalizacja: Robotyka</span></div>
+    <div class="terminal-line" style="color: #00aaff;"><span class="terminal-label" data-i18n="aboutme-specialty">Specialty:</span> <span class="terminal-content" data-i18n="aboutme-specialty-val">PCB Design | C++ | IoT | Nuclear Detection</span></div>
   </div>
 
   <div class="separator"></div>
@@ -615,11 +597,11 @@
   <!-- Command Menu with Expandable Content -->
   <div class="cmd-menu">
     <div class="cmd-menu-header">
-      <div style="color: #ff0055; font-weight: bold;" data-i18n="aboutme-find">$ find :</div>
-      <div class="cmd-item" data-cmd="education" data-file="./education.bin" style="color: #ff0055; border-color: #ff0055;" data-i18n="aboutme-education">education</div>
-      <div class="cmd-item" data-cmd="experience" data-file="./experience.bin" style="color: #ff0055; border-color: #ff0055;" data-i18n="aboutme-experience">experience</div>
-      <div class="cmd-item" data-cmd="skills" data-file="./skills.bin" style="color: #ff0055; border-color: #ff0055;" data-i18n="aboutme-skills">skills</div>
-      <div class="cmd-item" data-cmd="contact" data-file="./contact.bin" style="color: #ff0055; border-color: #ff0055;" data-i18n="aboutme-contact">contact</div>
+      <div style="color: #888; font-weight: bold;" data-i18n="aboutme-find">$ find :</div>
+      <div class="cmd-item" data-cmd="education" data-file="./education.bin" data-i18n="aboutme-education">education</div>
+      <div class="cmd-item" data-cmd="experience" data-file="./experience.bin" data-i18n="aboutme-experience">experience</div>
+      <div class="cmd-item" data-cmd="skills" data-file="./skills.bin" data-i18n="aboutme-skills">skills</div>
+      <div class="cmd-item" data-cmd="contact" data-file="./contact.bin" data-i18n="aboutme-contact">contact</div>
     </div>
 
     <div class="cmd-content" id="cmdContent">
