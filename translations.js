@@ -2,7 +2,7 @@ const translations = {
   pl: {
     // index.html
     "greeting": "[Cześć, nazywam się]",
-    "subtitle": "[i tworzę systemy wbudowane, które działają]",
+    "subtitle": "[i tworzę systemy wbudowane]",
     "aboutBtn-desktop": "Pokaż profil",
     "aboutBtn-mobile": "Pokaż profil",
     "mouseBtn-desktop": "Skąd ten efekt kursora?",
