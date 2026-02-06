@@ -6,7 +6,6 @@
     
     // Global mode tracking - can be "auto", "background", or "cursor"
     window.wilsonMode = localStorage.getItem('wilsonMode') || 'auto';
-    window.wilsonModeName = { auto: 'auto', background: 'background', cursor: 'cursor' };
     
     // Function to toggle wilson mode
     window.toggleWilsonMode = function() {
@@ -14,7 +13,37 @@
         const currentIndex = modes.indexOf(window.wilsonMode);
         window.wilsonMode = modes[(currentIndex + 1) % modes.length];
         localStorage.setItem('wilsonMode', window.wilsonMode);
-        console.log('Wilson Mode changed to:', window.wilsonMode);
+        
+        // Visual feedback on version-info
+        const versionEls = document.querySelectorAll('.version-info');
+        versionEls.forEach(el => {
+            el.style.color = '#ff0055';
+            el.textContent = '[wilson: ' + window.wilsonMode + ']';
+            setTimeout(() => {
+                el.style.color = '#333';
+            }, 1500);
+        });
+        
+        // Update #mouseBtn question text based on active mode
+        const lang = localStorage.getItem('language') || 'en';
+        const desktopSpan = document.querySelector('#mouseBtn .desktop-text');
+        const mobileSpan = document.querySelector('#mouseBtn .mobile-text');
+        if (desktopSpan && mobileSpan && typeof translations !== 'undefined') {
+            const t = translations[lang] || translations['en'];
+            if (window.wilsonMode === 'background') {
+                // Both spans show "background" text
+                desktopSpan.textContent = t['mouseBtn-mobile'];
+                mobileSpan.textContent = t['mouseBtn-mobile'];
+            } else if (window.wilsonMode === 'cursor') {
+                // Both spans show "cursor" text
+                desktopSpan.textContent = t['mouseBtn-desktop'];
+                mobileSpan.textContent = t['mouseBtn-desktop'];
+            } else {
+                // Auto mode: restore original (desktop=cursor, mobile=background)
+                desktopSpan.textContent = t['mouseBtn-desktop'];
+                mobileSpan.textContent = t['mouseBtn-mobile'];
+            }
+        }
     };
     
     // Wait for DOM to be ready
@@ -307,16 +336,14 @@
 
         requestAnimationFrame(animate);
 
-        // Auto-emit particles (more frequent in background mode since no cursor)
-        const useBackgroundMode = shouldUseBackgroundMode();
-        const autoEmitInterval = useBackgroundMode ? 400 : 1000;
-        const autoEmitChance = useBackgroundMode ? 0.6 : 0.2;
-        
+        // Auto-emit particles - checks mode dynamically each tick
         setInterval(() => {
-            if (Math.random() < autoEmitChance) {
+            const bgMode = shouldUseBackgroundMode();
+            const chance = bgMode ? 0.6 : 0.2;
+            if (Math.random() < chance) {
                 createParticle();
             }
-        }, autoEmitInterval);
+        }, 300);
     }
 
     // Start when DOM is ready
