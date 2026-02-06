@@ -8,26 +8,12 @@
     window.wilsonMode = localStorage.getItem('wilsonMode') || 'auto';
     window.wilsonModeName = { auto: 'auto', background: 'background', cursor: 'cursor' };
     
-    // Update button text on load
-    window.addEventListener('load', function() {
-        const btn = document.getElementById('wilsonToggleBtn');
-        if (btn) {
-            btn.textContent = '[wilson] mode: ' + window.wilsonMode;
-        }
-    });
-    
     // Function to toggle wilson mode
     window.toggleWilsonMode = function() {
         const modes = ['auto', 'background', 'cursor'];
         const currentIndex = modes.indexOf(window.wilsonMode);
         window.wilsonMode = modes[(currentIndex + 1) % modes.length];
         localStorage.setItem('wilsonMode', window.wilsonMode);
-        
-        // Update button text if exists
-        const btn = document.getElementById('wilsonToggleBtn');
-        if (btn) {
-            btn.textContent = '[wilson] mode: ' + window.wilsonMode;
-        }
         console.log('Wilson Mode changed to:', window.wilsonMode);
     };
     
