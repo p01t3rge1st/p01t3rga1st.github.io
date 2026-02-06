@@ -340,6 +340,28 @@
       pointer-events: none;
     }
 
+    #wilsonToggleBtn {
+      position: fixed;
+      bottom: 8px;
+      right: 150px;
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      color: #666;
+      background: transparent;
+      border: 1px solid #444;
+      padding: 4px 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 5;
+      pointer-events: auto;
+    }
+
+    #wilsonToggleBtn:hover {
+      color: #ff0055;
+      border-color: #ff0055;
+      box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+    }
+
     /* ========== MOBILE RESPONSIVE ========== */
     @media (max-width: 768px) {
       .navbar-minimal {
@@ -592,46 +614,49 @@
     // Check if mobile
     const isMobile = window.innerWidth <= 768;
 
-    if (isMobile) {
-      // Mobile: aboutBtn just navigates
-      aboutBtn.addEventListener('click', () => {
-        window.location.href = 'aboutme.html';
-      });
+    // Only setup if elements exist
+    if (aboutBtn && mouseBtn && aboutAnswer && mouseAnswer) {
+      if (isMobile) {
+        // Mobile: aboutBtn just navigates
+        aboutBtn.addEventListener('click', () => {
+          window.location.href = 'aboutme.html';
+        });
 
-      // Mobile: click to toggle mouseAnswer
-      mouseBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        mouseAnswer.classList.toggle('visible');
-      });
-      
-      // Close mouseAnswer when clicking anywhere else on mobile
-      document.addEventListener('click', (e) => {
-        if (mouseAnswer.classList.contains('visible') && e.target !== mouseBtn && !mouseBtn.contains(e.target) && e.target !== mouseAnswer && !mouseAnswer.contains(e.target)) {
+        // Mobile: click to toggle mouseAnswer
+        mouseBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          mouseAnswer.classList.toggle('visible');
+        });
+        
+        // Close mouseAnswer when clicking anywhere else on mobile
+        document.addEventListener('click', (e) => {
+          if (mouseAnswer.classList.contains('visible') && e.target !== mouseBtn && !mouseBtn.contains(e.target) && e.target !== mouseAnswer && !mouseAnswer.contains(e.target)) {
+            mouseAnswer.classList.remove('visible');
+          }
+        });
+      } else {
+        // Desktop: hover shows answer boxes
+        aboutBtn.addEventListener('mouseenter', () => {
+          aboutAnswer.classList.add('visible');
+        });
+        
+        aboutBtn.addEventListener('mouseleave', () => {
+          aboutAnswer.classList.remove('visible');
+        });
+
+        // Navigate to about page on click
+        aboutBtn.addEventListener('click', () => {
+          window.location.href = 'aboutme.html';
+        });
+
+        mouseBtn.addEventListener('mouseenter', () => {
+          mouseAnswer.classList.add('visible');
+        });
+        
+        mouseBtn.addEventListener('mouseleave', () => {
           mouseAnswer.classList.remove('visible');
-        }
-      });
-    } else {
-      // Desktop: hover shows answer boxes
-      aboutBtn.addEventListener('mouseenter', () => {
-        aboutAnswer.classList.add('visible');
-      });
-      
-      aboutBtn.addEventListener('mouseleave', () => {
-        aboutAnswer.classList.remove('visible');
-      });
-
-      // Navigate to about page on click
-      aboutBtn.addEventListener('click', () => {
-        window.location.href = 'aboutme.html';
-      });
-
-      mouseBtn.addEventListener('mouseenter', () => {
-        mouseAnswer.classList.add('visible');
-      });
-      
-      mouseBtn.addEventListener('mouseleave', () => {
-        mouseAnswer.classList.remove('visible');
-      });
+        });
+      }
     }
   </script>
   <script src="wilson.js"></script>
@@ -645,6 +670,7 @@
         <a href="mailto:kaminskimateusz.p01@gmail.com" style="color: #ff0055;" data-i18n="email">[Email]</a>
       </div>
     </div>
+    <button id="wilsonToggleBtn" onclick="toggleWilsonMode()">[wilson] mode: auto</button>
     <div class="version-info" data-i18n="version">v1.0.0 | Last update: 2026-02-05 @ 14:30</div>
  
 </body>

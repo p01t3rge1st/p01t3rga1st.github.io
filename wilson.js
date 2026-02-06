@@ -4,6 +4,33 @@
 (function() {
     console.log('Wilson Chamber: Script loaded');
     
+    // Global mode tracking - can be "auto", "background", or "cursor"
+    window.wilsonMode = localStorage.getItem('wilsonMode') || 'auto';
+    window.wilsonModeName = { auto: 'auto', background: 'background', cursor: 'cursor' };
+    
+    // Update button text on load
+    window.addEventListener('load', function() {
+        const btn = document.getElementById('wilsonToggleBtn');
+        if (btn) {
+            btn.textContent = '[wilson] mode: ' + window.wilsonMode;
+        }
+    });
+    
+    // Function to toggle wilson mode
+    window.toggleWilsonMode = function() {
+        const modes = ['auto', 'background', 'cursor'];
+        const currentIndex = modes.indexOf(window.wilsonMode);
+        window.wilsonMode = modes[(currentIndex + 1) % modes.length];
+        localStorage.setItem('wilsonMode', window.wilsonMode);
+        
+        // Update button text if exists
+        const btn = document.getElementById('wilsonToggleBtn');
+        if (btn) {
+            btn.textContent = '[wilson] mode: ' + window.wilsonMode;
+        }
+        console.log('Wilson Mode changed to:', window.wilsonMode);
+    };
+    
     // Wait for DOM to be ready
     function init() {
         console.log('Wilson Chamber: Init called');
@@ -52,9 +79,17 @@
             mouseY = e.pageY;
         });
         
+        // Determine if we should use background mode (random positions)
+        function shouldUseBackgroundMode() {
+            if (window.wilsonMode === 'background') return true;
+            if (window.wilsonMode === 'cursor') return false;
+            // Auto mode: background on touch devices, cursor on desktop
+            return isTouchDevice;
+        }
+        
         // For touch devices, generate random positions
         function getEmissionPosition() {
-            if (isTouchDevice) {
+            if (shouldUseBackgroundMode()) {
                 // Random position on visible screen
                 return {
                     x: Math.random() * window.innerWidth,
@@ -203,9 +238,10 @@
 
         // Animate particles
         function animate(currentTime) {
-            // Emit new particles (more frequent on touch devices)
-            const emitRate = isTouchDevice ? 150 : config.emissionRate;
-            const emitChance = isTouchDevice ? 0.7 : 0.4;
+            // Emit new particles (more frequent in background mode)
+            const useBackgroundMode = shouldUseBackgroundMode();
+            const emitRate = useBackgroundMode ? 150 : config.emissionRate;
+            const emitChance = useBackgroundMode ? 0.7 : 0.4;
             
             if (currentTime - lastEmission > emitRate) {
                 if (Math.random() < emitChance) {
@@ -285,9 +321,10 @@
 
         requestAnimationFrame(animate);
 
-        // Auto-emit particles (more frequent on touch devices since no cursor)
-        const autoEmitInterval = isTouchDevice ? 400 : 1000;
-        const autoEmitChance = isTouchDevice ? 0.6 : 0.2;
+        // Auto-emit particles (more frequent in background mode since no cursor)
+        const useBackgroundMode = shouldUseBackgroundMode();
+        const autoEmitInterval = useBackgroundMode ? 400 : 1000;
+        const autoEmitChance = useBackgroundMode ? 0.6 : 0.2;
         
         setInterval(() => {
             if (Math.random() < autoEmitChance) {

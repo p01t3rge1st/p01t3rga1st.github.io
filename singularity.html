@@ -16,6 +16,12 @@
       left: 0;
       right: 0;
       z-index: 100;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .navbar-minimal.hide {
+      opacity: 0;
+      visibility: hidden;
     }
 
     .logo-minimal {
@@ -248,6 +254,28 @@
       pointer-events: none;
     }
 
+    #wilsonToggleBtn {
+      position: fixed;
+      bottom: 8px;
+      right: 150px;
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      color: #666;
+      background: transparent;
+      border: 1px solid #444;
+      padding: 4px 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 5;
+      pointer-events: auto;
+    }
+
+    #wilsonToggleBtn:hover {
+      color: #ff0055;
+      border-color: #ff0055;
+      box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+    }
+
     /* ========== MOBILE RESPONSIVE ========== */
     @media (max-width: 768px) {
       .navbar-minimal {
@@ -409,8 +437,26 @@
   window.addEventListener("load", function(){
     loader.style.display = "none"
   });
+
+  // Navbar hide on scroll down (mobile)
+  let lastScrollTop = 0;
+  const navbar = document.querySelector('.navbar-minimal');
+  const isMobileScroll = window.innerWidth <= 768;
+
+  if (isMobileScroll && navbar) {
+    window.addEventListener('scroll', () => {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop + 10) {
+        navbar.classList.add('hide');
+      } else if (currentScroll < lastScrollTop - 10) {
+        navbar.classList.remove('hide');
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  }
 </script>
 
+<button id="wilsonToggleBtn" onclick="toggleWilsonMode()">[wilson] mode: auto</button>
 <div class="version-info">v1.0.0 | Last update: 2026-02-05 @ 14:30</div>
 </body>
 </html>

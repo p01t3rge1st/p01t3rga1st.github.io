@@ -221,8 +221,8 @@ const translations = {
     "projects-singularity-desc": "A distributed sensor network for monitoring environmental hazards. This long-term project sparked my journey into electronics, UI development, C++/Python programming, API integration, and understanding sensor interdependencies. Currently in active development and deployment phase.",
     "projects-singularity-view": "View Project Status",
     "projects-radiometer-date": "// 2019 - Present (sporadic repairs)",
-    "projects-radiometer-title": "▸ Restoration of Polonium Alpha Measurement Automation",
-    "projects-radiometer-desc": "Restoration of classic Polish dosimetry equipment: RUST polonium alpha detectors, URS-3, SAPOS-90, and HP oscilloscope from the 80s. Gained hands-on experience with legacy circuits, integrated memory response analysis, high-voltage module repairs, amplification and counting circuits.",
+    "projects-radiometer-title": "▸ Restoration ofPolon Alpha Measurement Automation",
+    "projects-radiometer-desc": "Restoration of classic Polish dosimetry equipment: RUST Polon alpha detectors, URS-3, SAPOS-90, and HP oscilloscope from the 80s. Gained hands-on experience with legacy circuits, integrated memory response analysis, high-voltage module repairs, amplification and counting circuits.",
     "projects-raysid-date": "// 2022 - Present",
     "projects-raysid-title": "▸ RaySID Gamma Spectrometer — Desktop Application",
     "projects-raysid-desc": "Desktop application for gamma radiation spectrum analysis. Integrates measurements from scintillation detectors, processes data in real-time, and displays results in an accessible manner.",
@@ -256,7 +256,7 @@ const translations = {
     "github": "[GitHub]",
     "linkedin": "[LinkedIn]",
     "email": "[Email]",
-    "version": "v1.0.0 | Last update: 2026-02-05 @ 14:30",
+    "version": "v1.1.0 | Last update: 2026-02-06 @ 11:33",
   }
 };
 
