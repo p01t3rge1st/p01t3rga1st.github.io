@@ -126,7 +126,7 @@ const translations = {
     "github": "[GitHub]",
     "linkedin": "[LinkedIn]",
     "email": "[Email]",
-    "version": "v1.0.0 | Ostatnia aktualizacja: 2026-02-05 @ 23:45",
+    "version-prefix": "Ostatnia aktualizacja",
   },
   
   en: {
@@ -256,7 +256,7 @@ const translations = {
     "github": "[GitHub]",
     "linkedin": "[LinkedIn]",
     "email": "[Email]",
-    "version": "v1.1.0 | Last update: 2026-02-06 @ 11:33",
+    "version-prefix": "Last update",
   }
 };
 

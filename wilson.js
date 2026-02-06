@@ -21,6 +21,10 @@
             el.textContent = '[wilson: ' + window.wilsonMode + ']';
             setTimeout(() => {
                 el.style.color = '#333';
+                // Restore dynamic version text from GitHub API
+                if (window._versionText) {
+                    el.textContent = window._versionText;
+                }
             }, 1500);
         });
         
@@ -46,6 +50,37 @@
         }
     };
     
+    // Auto-fetch version from GitHub last commit date
+    function fetchVersion() {
+        const repo = 'p01t3rge1st/p01t3rga1st.github.io';
+        const url = 'https://api.github.com/repos/' + repo + '/commits?per_page=1';
+        fetch(url)
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (!data[0] || !data[0].commit) return;
+                var d = new Date(data[0].commit.committer.date);
+                var pad = function(n) { return n < 10 ? '0' + n : n; };
+                var dateStr = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate())
+                    + ' @ ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+                var lang = localStorage.getItem('language') || 'en';
+                var prefix = (lang === 'pl') ? 'Ostatnia aktualizacja' : 'Last update';
+                var text = 'v1.0.0 | ' + prefix + ': ' + dateStr;
+                window._versionText = text;
+                document.querySelectorAll('.version-info').forEach(function(el) {
+                    // Don't overwrite if wilson toggle is showing
+                    if (!el.textContent.startsWith('[wilson:')) {
+                        el.textContent = text;
+                    }
+                });
+            })
+            .catch(function() { /* keep placeholder */ });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fetchVersion);
+    } else {
+        fetchVersion();
+    }
+
     // Wait for DOM to be ready
     function init() {
         console.log('Wilson Chamber: Init called');
