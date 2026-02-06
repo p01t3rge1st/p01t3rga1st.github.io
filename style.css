@@ -188,13 +188,25 @@ html, body {
 
 
 #preloader{
-    background: #000 url(preloader2.gif) no-repeat center;
-    background-size: 30%;
+    background: #000;
     height: 100vh;
     width: 100%;
     position: fixed;
     z-index: 100;
     margin-top: -100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+    font-size: 48px;
+    color: #ff0055;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+}
+
+#preloader::after {
+    content: '[|]';
+    animation: spin-loader 0.6s steps(4, end) infinite;
 }
 
 
@@ -213,6 +225,20 @@ html, body {
      }
 }
 
+@keyframes spin-loader {
+    0% {
+        content: '[|]';
+    }
+    25% {
+        content: '[/]';
+    }
+    50% {
+        content: '[-]';
+    }
+    75% {
+        content: '[\]';
+    }
+}
 
   .wrapper {
     width:600px;
